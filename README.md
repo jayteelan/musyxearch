@@ -2,47 +2,79 @@
 
 
 ## Project Name
+musYXearch
 
-**Project decription:** Use this section to describe your project and what API or APIs it will utilize. List any relevant links, including the url to your live, deployed site.
+**Project decription:** 
+musYXearch pulls musical artist and release information from the Discogs API and presents it to the user in an X/Y-navigable grid - for example, an artist's releases will be positioned along the Y axis according to release type (album, EP, single) and the X axis according to release date.
 
 ## API Snippet
 
 ```
 {
-    "videos": [
-        {
-            "duration": 2638,
-            "description": "Dj Muggs vs GZA - Grandmasters (2005) [full album]",
-            "embed": true,
-            "uri": "https://www.youtube.com/watch?v=cuV_-QRjeY4",
-            "title": "Dj Muggs vs GZA - Grandmasters (2005) [full album]"
-        },
-        {
-            "duration": 2090,
-            "description": "GZA The Genius Vs ^DJ Muggs   Grandmasters Remix Album Bonus DVDrip 2007",
-            "embed": true,
-            "uri": "https://www.youtube.com/watch?v=DR2JrGwA3yU",
-            "title": "GZA The Genius Vs ^DJ Muggs   Grandmasters Remix Album Bonus DVDrip 2007"
-        }
-    ],
-    "series": [],
-    "labels": [
-        {
-            "name": "Angeles Records",
-            "entity_type": "1",
-            "catno": "UPA 3115-1",
-            "resource_url": "https://api.discogs.com/labels/51619",
-            "id": 51619,
-            "entity_type_name": "Label"
-        },
-        {
-            "name": "Up Above Records",
-            "entity_type": "1",
-            "catno": "UPA 3115-1",
-            "resource_url": "https://api.discogs.com/labels/19495",
-            "id": 19495,
-            "entity_type_name": "Label"
-        }
+pagination: {
+per_page: 50,
+items: 3,
+page: 1,
+urls: { },
+pages: 1
+},
+results: [
+{
+style: [
+"Downtempo",
+"Leftfield",
+"Trip Hop",
+"Fusion"
+],
+master_id: 57965,
+thumb: "https://img.discogs.com/ZWKbNH4sfIq57hWywmX9SFmO5hM=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-87829-1408826976-2690.jpeg.jpg",
+format: [
+"Vinyl",
+"LP",
+"Album"
+],
+country: "US",
+barcode: [
+"0 9362-45989-1 6",
+"1-45989-A-SR1",
+"1-45989-B-SR1 R/G",
+"ASCAP",
+"BMI"
+],
+uri: "/Cibo-Matto-Viva-La-Woman/master/57965",
+master_url: "https://api.discogs.com/masters/57965",
+label: [
+"Warner Bros. Records",
+"Warner Bros. Records",
+"Warner Bros. Records Inc.",
+"Warner Bros. Records Inc.",
+"WEA International Inc.",
+"WEA International Inc.",
+"Soul Urchin Songs",
+"Trademark Music Inc.",
+"CAM Cine TV Music, Inc.",
+"The Sound Factory",
+"Electric Lady Studios",
+"Gateway Mastering",
+"Specialty Records Corporation"
+],
+cover_image: "https://img.discogs.com/In5zhDYZqFiwiW_w7yV-z3MYx9I=/fit-in/600x595/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-87829-1408826976-2690.jpeg.jpg",
+catno: "9 45989-1",
+community: {
+have: 2364,
+want: 955
+},
+year: "1996",
+genre: [
+"Electronic",
+"Hip Hop",
+"Pop"
+],
+title: "Cibo Matto - Viva! La Woman",
+resource_url: "https://api.discogs.com/masters/57965",
+type: "master",
+id: 57965
+},
 ```
 
 ## Wireframes
@@ -51,20 +83,15 @@ Display all wireframes here with any neccessary descriptions.
 
 ### MVP
 
-Carefully decided what is placed into your MVP as the client will expect this functionality to be implemented upon project completion.  
-
-#### MVP EXAMPLE:
-- Find and use external api 
-- Render data on page 
-- Allow user to choose favorites 
-- Save their choices in firebase
+- artist search bar
+- dynamically-rendered X/Y grid for search results 
+- component cells (screens) for search results, artist, release
 
 ### Post-MVP
 
-List any additional functionality you would like to implement once MVP has been reached.
-
-#### PostMVP EXAMPLE:
-- Add user auth
+- implement CSS swipe gestures for touchscreen devices
+- add a Z-axis (content TBD, possibly different formats or versions of a title); rename product to muZYXearch in this case
+- add pinch/zoom gestures linked to Z-axis (anticipate need for external library)
 
 ## React Component Hierarchy
 
@@ -111,7 +138,9 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 ## Additional Libraries
 
-Use this section to list all supporting libraries and thier role in the project. React Router Dom and Axios should be listed here at the very least.
+- **react-router-dom**: enable navigation between component screens
+- **axios**: retrieve API data
+- **dotenv**: hide API key
 
 ## Issues and Resolutions
 
