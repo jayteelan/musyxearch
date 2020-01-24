@@ -79,7 +79,7 @@ id: 57965
 
 ## Wireframes
 (overall structure has been modified since this image was saved, but individual screen wireframes are accurate)
-[wireframe](https://i.imgur.com/kdQuqpa.png)
+![wireframe](https://i.imgur.com/kdQuqpa.png)
 
 ### MVP
 
@@ -96,7 +96,7 @@ id: 57965
 
 ## React Component Hierarchy
 (this architecture is more up-to-date than the one in the wireframe section; may add a header component on same level as Main)
-[hierarchy](https://i.imgur.com/8jjZycw.png)
+![hierarchy](https://i.imgur.com/8jjZycw.png)
 
 ## Components
 
@@ -113,7 +113,7 @@ id: 57965
 
 ## Priority Matrix
 
-[matrix](https://i.imgur.com/6PXX42L.png)
+![matrix](https://i.imgur.com/6PXX42L.png)
 
 ## Timeframes
 
