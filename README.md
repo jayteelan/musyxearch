@@ -139,9 +139,9 @@ You are **responsible** for scheduling time with your squad to seek approval for
 |  Day | Deliverable | Status
 |---|---| ---|
 |Jan 24th| Project Pitch / Wireframes / Priority Matrix / Functional Components | Incomplete
-|Jan 27th| Core Application Structure | Incomplete
-|Jan 28th| Pseudocode / actual code | Incomplete
-|Jan 29th| code/MVP | Incomplete
+|Jan 27th| create/route components with placeholder divs | Incomplete
+|Jan 28th| functioning search bar/API call/data parse to console | Incomplete
+|Jan 29th| render data to DOM | Incomplete
 |Jan 30th| Styling/Post-MVP | Incomplete
 |Jan 31tst| Present | Incomplete
 
