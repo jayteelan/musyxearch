@@ -1,6 +1,6 @@
 # Project Overview
 
-
+![diarrhea planet](https://data.whicdn.com/images/20753190/original.gif "I read the instructions")
 ## Project Name
 musYXearch
 
@@ -78,37 +78,42 @@ id: 57965
 ```
 
 ## Wireframes
-
-Display all wireframes here with any neccessary descriptions.
+(overall structure has been modified since this image was saved, but individual screen wireframes are accurate)
+[wireframe](https://i.imgur.com/kdQuqpa.png)
 
 ### MVP
 
 - artist search bar
-- dynamically-rendered X/Y grid for search results 
+- dynamically-rendered X/Y "grid" for search results 
 - component cells (screens) for search results, artist, release
 
 ### Post-MVP
 
 - implement CSS swipe gestures for touchscreen devices
+- use localStorage to check if site has been accessed before and render instruction overlays if not
 - add a Z-axis (content TBD, possibly different formats or versions of a title); rename product to muZYXearch in this case
 - add pinch/zoom gestures linked to Z-axis (anticipate need for external library)
 
 ## React Component Hierarchy
-
-Include an image of your component hierarchy that shows the data flow and architectural design of your app.
+(this architecture is more up-to-date than the one in the wireframe section; may add a header component on same level as Main)
+[hierarchy](https://i.imgur.com/8jjZycw.png)
 
 ## Components
 
-Based on the initial logic defined in the previous section, try to breakdown the logic further into stateless/stateful components. 
 
-| Component | Description |Type |
+| Component | Description | Type |
 | --- | --- | --- |
-| Header | The Header receives props that render multiple nav titles and links | Functional |
-| Main | This component houses multiple rendered views through React Router and controls data received from the initial API call in state | Class |
+| app.js | contains primary structure and methods | class |
+| main | displays current content based on inherited X/Y states | functional |
+| header | displays current section based on inherited category state | functional |
+| about | instructions on how to use the app, copyright note | functional |
+| search | sends user input for API call | class |
+| PictureList | displays list items with associated thumbnail pictures | functional |
+| ReleaseDeets | displays detailed information about a selected album or single | functional |
 
 ## Priority Matrix
 
-Include an image of your Priority Matrix (X is time and Y is priority)
+[matrix](https://i.imgur.com/6PXX42L.png)
 
 ## Timeframes
 
@@ -117,9 +122,13 @@ Timeframes are key in the development cycle. You have limited time to code and s
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 3hrs| 3.5hrs | 3.5hrs |
-| Working with API | H | 3hrs| 2.5hrs | 2.5hrs |
-| Total | H | 6hrs| 5hrs | 5hrs |
+| create file structure | H | 3hrs |  |  |
+| fetch/parse API data | H | 8hrs |  |  |
+| code search components/ screen | H | 3hrs |  |  |
+| code/link remaining screens with inherited API data | H | 12 hrs |  |  |
+| Styling | L-M | 8hrs |  |  |
+| Post-MVP | L | 6 hrs |  |  |
+| Total |  | 40 hrs |  |  |
 
 ## Project Schedule
 
@@ -130,10 +139,10 @@ You are **responsible** for scheduling time with your squad to seek approval for
 |  Day | Deliverable | Status
 |---|---| ---|
 |Jan 24th| Project Pitch / Wireframes / Priority Matrix / Functional Components | Incomplete
-|Jan 27th| Core Application Structure (HTML, CSS, etc.) | Incomplete
+|Jan 27th| Core Application Structure | Incomplete
 |Jan 28th| Pseudocode / actual code | Incomplete
-|Jan 29th| Initial Clickable Model  | Incomplete
-|Jan 30th| MVP | Incomplete
+|Jan 29th| code/MVP | Incomplete
+|Jan 30th| Styling/Post-MVP | Incomplete
 |Jan 31tst| Present | Incomplete
 
 ## Additional Libraries
@@ -157,4 +166,6 @@ function reverse(string) {
 ```
 
 ## Change Log
- Use this section to document what changes were made in your overall planning and the reasoning behind those changes.  
+
+**24. Jan**
+- scrapped plan to structure with CSS grid and instead focus on full-viewport screens
