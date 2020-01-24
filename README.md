@@ -1,8 +1,8 @@
 # Project Overview
 
 ![diarrhea planet](https://data.whicdn.com/images/20753190/original.gif "I read the instructions")
-## Project Name
-musYXearch
+
+## musYXearch
 
 **Project decription:** 
 musYXearch pulls musical artist and release information from the Discogs API and presents it to the user in an X/Y-navigable grid - for example, an artist's releases will be positioned along the Y axis according to release type (album, EP, single) and the X axis according to release date.
