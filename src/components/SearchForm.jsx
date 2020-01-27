@@ -1,11 +1,17 @@
 import React, { Component } from "react";
+import fetchDiscography from "../API";
 
 class SearchForm extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
+    console.log("form", props);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  // handleSubmit = e => {
+  // 	e.preventDefault();
+  // 	let query=
+  // }
 
   render() {
     return (

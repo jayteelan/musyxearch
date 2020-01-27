@@ -4,6 +4,7 @@ import SearchForm from "../components/SearchForm";
 class Search extends Component {
   constructor(props) {
     super(props);
+    console.log("search", props);
 
     this.state = {};
   }
@@ -12,7 +13,7 @@ class Search extends Component {
     return (
       <div className="search">
         <h1>SEARCH</h1>
-        <SearchForm />
+        <SearchForm {...this.props} />
       </div>
     );
   }

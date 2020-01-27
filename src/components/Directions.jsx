@@ -6,51 +6,39 @@ class Directions extends Component {
     super(props);
     console.log("direction", props);
     this.goUp = this.goUp.bind(this);
+    this.goDown = this.goDown.bind(this);
   }
   /* ---------- UPDATE posX/Y STATES ---------- */
-  goUp(e) {
-    // e.stopPropagation();
-
-    console.log("up", this.props.posY);
+  goUp = e => {
+    console.log("Y", this.props.posY);
     if (this.props.posY !== 0) {
-      this.props.updatePosition("posY");
+      this.props.reducePosition("posY");
     }
-  }
+  };
 
   goDown = e => {
-    e.stopPropagation();
-
-    console.log("down", this.state.posY);
-    return this.state.posY === this.state.arrY.length - 1 ? (
-      <div></div>
-    ) : (
-      this.setState(prevState => ({
-        posY: prevState.posY + 1
-      }))
-    );
+    console.log("Y", this.props.posY);
+    if (this.props.posY !== this.props.arrY.length - 1) {
+      this.props.increasePosition("posY");
+    }
   };
 
   goLeft = e => {
-    console.log("right", this.props.posX);
+    console.log("X", this.props.posX);
     if (this.props.posX !== 0) {
-      this.props.updatePosition("posX");
+      this.props.reducePosition("posX");
     }
   };
 
   goRight = e => {
     e.stopPropagation();
-    console.log("right", this.props.posX);
-    // console.log("plus1", this.props.posX + 1);
-    return this.props.posX === this.props.arrX.length - 1 ? (
-      <div></div>
-    ) : (
-      this.setState(prevState => ({
-        posX: prevState.posX + 1
-      }))
-      // this.updateX()
-    );
+    console.log("X", this.props.posX);
+    if (this.props.posX !== this.props.arrX.length - 1) {
+      this.props.increasePosition("posX");
+    }
   };
 
+  /* ---------- RENDER ---------- */
   render() {
     return (
       // conditional rendering for pos=0 or pos=arr.length-1
