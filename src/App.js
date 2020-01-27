@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import "./App.css";
 import Main from "./screens/Main";
 import Directions from "./components/Directions";
+import Header from "./components/Header";
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,9 @@ class App extends Component {
       isLoading: true,
       posX: 1,
       posY: 0,
+      arrX: [0, 1, 2, 3, 4, 5],
+      arrY: [0, 1],
+      headTitle: "musYXearch",
       searchInput: "",
       currentArtist: ""
     };
@@ -20,7 +24,13 @@ class App extends Component {
     return (
       <div className="App">
         <h1>APP</h1>
-        <Directions posX={this.state.posX} posY={this.state.posY} />
+        <Header headTitle={this.state.headTitle} />
+        <Directions
+          posX={this.state.posX}
+          posY={this.state.posY}
+          arrX={this.state.arrX}
+          arrY={this.state.arrY}
+        />
         <Main
           isLoading={this.state.isLoading}
           posX={this.state.posX}
