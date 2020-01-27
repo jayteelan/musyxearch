@@ -6,8 +6,7 @@ const Main = props => {
   return (
     <div className="Main">
       <h1>MAIN</h1>
-      {/* if ({(props.posX = 1)}) return <Search />
-      posX=0 return About posX=2 return Artist posX=3 return PicList */}
+      {props.renderScreen()}
     </div>
   );
 };

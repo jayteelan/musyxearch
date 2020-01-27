@@ -1,29 +1,25 @@
 import React, { Component } from "react";
+import { Route, Link } from "react-router-dom";
 
 class Directions extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      posX: 1,
-      posY: 0,
-      arrX: [0, 1, 2, 3, 4, 5],
-      arrY: [0, 1]
-    };
-    console.log(props);
+    console.log("direction", props);
+    this.goUp = this.goUp.bind(this);
   }
   /* ---------- UPDATE posX/Y STATES ---------- */
-  goUp = e => {
-    console.log("up", this.state.posY);
-    return this.state.posY === 0 ? (
-      <div></div>
-    ) : (
-      this.setState(prevState => ({
-        posY: prevState.posY - 1
-      }))
-    );
-  };
+  goUp(e) {
+    // e.stopPropagation();
+
+    console.log("up", this.props.posY);
+    if (this.props.posY !== 0) {
+      this.props.updatePosition("posY");
+    }
+  }
 
   goDown = e => {
+    e.stopPropagation();
+
     console.log("down", this.state.posY);
     return this.state.posY === this.state.arrY.length - 1 ? (
       <div></div>
@@ -35,24 +31,23 @@ class Directions extends Component {
   };
 
   goLeft = e => {
-    console.log("left", this.state.posX);
-    return this.state.posX === 0 ? (
-      <div></div>
-    ) : (
-      this.setState(prevState => ({
-        posX: prevState.posX - 1
-      }))
-    );
+    console.log("right", this.props.posX);
+    if (this.props.posX !== 0) {
+      this.props.updatePosition("posX");
+    }
   };
 
   goRight = e => {
-    console.log("right", this.state.posX);
-    return this.state.posX === this.state.arrX.length - 1 ? (
+    e.stopPropagation();
+    console.log("right", this.props.posX);
+    // console.log("plus1", this.props.posX + 1);
+    return this.props.posX === this.props.arrX.length - 1 ? (
       <div></div>
     ) : (
       this.setState(prevState => ({
         posX: prevState.posX + 1
       }))
+      // this.updateX()
     );
   };
 
@@ -64,13 +59,13 @@ class Directions extends Component {
         <i className="material-icons" onClick={this.goUp}>
           arrow_upward
         </i>
-        <i className="material-icons" onClick={this.goLeft}>
+        <i className="material-icons" onClick={e => this.goLeft(e)}>
           arrow_back
         </i>
-        <i className="material-icons" onClick={this.goRight}>
+        <i className="material-icons" onClick={e => this.goRight(e)}>
           arrow_forward
         </i>
-        <i className="material-icons" onClick={this.goDown}>
+        <i className="material-icons" onClick={e => this.goDown(e)}>
           arrow_downward
         </i>
       </div>
