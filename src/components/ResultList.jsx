@@ -6,7 +6,7 @@ const ResultList = props => {
   console.log("resultlist", props);
 
   return (
-    <ul className="result-list">
+    <div className="li">
       {props.arr.map((item, i) => (
         <li key={`${item}[${i}]`}>
           <Link key={props.arr[i]} to={item}>
@@ -17,14 +17,14 @@ const ResultList = props => {
       ))}
 
       {/* link each li to Release[posY] */}
-      {/* <Route
+      <Route
         exact
         path="/:release_id"
         component={props => {
           return <Release release-id={props.match.params.release_id} />;
         }}
-      /> */}
-    </ul>
+      />
+    </div>
   );
 };
 

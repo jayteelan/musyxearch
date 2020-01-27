@@ -1,5 +1,7 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import ResultList from "../components/ResultList";
+import Release from "./Release";
 
 const PicList = props => {
   console.log("picList", props);
@@ -15,7 +17,9 @@ const PicList = props => {
   return (
     <div className="piclist">
       <h1>{category()}</h1>
-      <ResultList {...props} />
+      <ul>
+        <ResultList {...props} />
+      </ul>
     </div>
   );
 };
