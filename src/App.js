@@ -60,26 +60,6 @@ class App extends Component {
     }));
   }
 
-  /* ---------- UPDATE searchInput ---------- */
-  handleChange = e => {
-    this.setState({
-      searchInput: e.target.value
-    });
-  };
-
-  /* ---------- UPDATE currentArtist ---------- */
-  setCurrentArtist = data => {
-    this.setState({ currentArtist: data });
-  };
-
-  /* ---------- FETCH ARTIST DATA ---------- */
-  handleSubmit = async e => {
-    e.preventDefault();
-    const query = this.state.searchInput;
-    const artistData = await searchArtist(query);
-    this.setCurrentArtist(artistData);
-  };
-
   /* ---------- CHANGE CURRENT SCREEN BASED ON posX ---------- */
   renderScreenX = () => {
     switch (this.state.posX) {
@@ -90,7 +70,7 @@ class App extends Component {
         // console.log("posX", this.state.posX);
         return (
           <Search
-            handleChange={this.handleChange}
+            handleInputChange={this.handleInputChange}
             handleSubmit={this.handleSubmit}
             setCurrentArtist={this.setCurrentArtist}
             searchInput={this.state.searchInput}
@@ -99,14 +79,16 @@ class App extends Component {
         );
       case 2:
         // console.log("posX", this.state.posX);
-        return <Artist />;
+        return <Artist currentArtist={this.state.currentArtist} />;
       case 3:
         // console.log("posX", this.state.posX);
         return (
           <PicList
             {...this.props}
             posX={this.state.posX}
+            posY={this.state.posY}
             arr={this.state.arrY}
+            // onShow={this.handleDiscography}
           />
         );
       case 4:
@@ -134,6 +116,42 @@ class App extends Component {
     }
   };
 
+  /* ---------- UPDATE searchInput STATE ---------- */
+  handleInputChange = e => {
+    this.setState({
+      searchInput: e.target.value
+    });
+  };
+
+  /* ---------- UPDATE currentArtist STATE ---------- */
+  setCurrentArtist = data => {
+    this.setState({ currentArtist: data });
+  };
+
+  /* ---------- FETCH ARTIST DATA ---------- */
+  handleSubmit = async e => {
+    e.preventDefault();
+    const query = this.state.searchInput;
+    const artistData = await searchArtist(query);
+    this.setCurrentArtist(artistData);
+    console.log(artistData);
+    this.handleDiscography();
+  };
+
+  /* ---------- FETCH DISCOGRAPHY ---------- */
+  // this.state.posX determines format
+  handleDiscography = async () => {
+    const artist = this.state.currentArtist.name;
+    console.log("woot", artist);
+    const albumList = await fetchDiscography(artist, "album");
+    this.setState({ arrY: albumList.results });
+    console.log("arrY", this.state.arrY);
+    // switch (this.state.posX) {
+    // 	case 3:
+    // 		this.setState()
+    // }
+  };
+
   /* ---------- RENDER ---------- */
   render() {
     return (
@@ -157,7 +175,7 @@ class App extends Component {
           searchInput={this.state.searchInput}
           currentArtist={this.state.currentArtist}
           renderScreenX={this.renderScreenX}
-          handleChange={this.handleChange}
+          handleInputChange={this.handleInputChange}
         />
       </div>
     );

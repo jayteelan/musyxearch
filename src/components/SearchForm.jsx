@@ -14,7 +14,7 @@ class SearchForm extends Component {
           type="text"
           name="searchbar"
           placeholder="enter an artist name"
-          onChange={this.props.handleChange}
+          onChange={this.props.handleInputChange}
         />
         <button onClick={this.props.handleSubmit}>Start</button>
       </form>
