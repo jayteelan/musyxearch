@@ -4,7 +4,7 @@
 
 ## musYXearch
 
-**Project decription:** 
+**Project decription:**
 musYXearch pulls musical artist and release information from the Discogs API and presents it to the user in an X/Y-navigable grid - for example, an artist's releases will be positioned along the Y axis according to release type (album, EP, single) and the X axis according to release date.
 
 ## API Snippet
@@ -78,13 +78,14 @@ id: 57965
 ```
 
 ## Wireframes
+
 (overall structure has been modified since this image was saved, but individual screen wireframes are accurate)
 ![wireframe](https://i.imgur.com/kdQuqpa.png)
 
 ### MVP
 
 - artist search bar
-- dynamically-rendered X/Y "grid" for search results 
+- dynamically-rendered X/Y "grid" for search results
 - component cells (screens) for search results, artist, release
 
 ### Post-MVP
@@ -95,20 +96,20 @@ id: 57965
 - add pinch/zoom gestures linked to Z-axis (anticipate need for external library)
 
 ## React Component Hierarchy
+
 (this architecture is more up-to-date than the one in the wireframe section; may add a header component on same level as Main)
 ![hierarchy](https://i.imgur.com/8jjZycw.png)
 
 ## Components
 
-
-| Component | Description | Type |
-| --- | --- | --- |
-| app.js | contains primary structure and methods | class |
-| main | displays current content based on inherited X/Y states | functional |
-| header | displays current section based on inherited category state | functional |
-| about | instructions on how to use the app, copyright note | functional |
-| search | sends user input for API call | class |
-| PictureList | displays list items with associated thumbnail pictures | functional |
+| Component    | Description                                                    | Type       |
+| ------------ | -------------------------------------------------------------- | ---------- |
+| app.js       | contains primary structure and methods                         | class      |
+| main         | displays current content based on inherited X/Y states         | functional |
+| header       | displays current section based on inherited category state     | functional |
+| about        | instructions on how to use the app, copyright note             | functional |
+| search       | sends user input for API call                                  | class      |
+| PictureList  | displays list items with associated thumbnail pictures         | functional |
 | ReleaseDeets | displays detailed information about a selected album or single | functional |
 
 ## Priority Matrix
@@ -117,33 +118,32 @@ id: 57965
 
 ## Timeframes
 
-Timeframes are key in the development cycle. You have limited time to code and so much to accomplish!  Look at all of your planned files and components, and all of the areas of development you are planning and give an estimate of how long each one will take to complete. It's always best to pad the time to account for the unknown, so be sure to add an additional hour or two to play it safe. As you progress, you can update the "Time Invested" column to keep track of your hours, but that number should turn into "Actual Time" by the presentation day. Also, put a winter-themed gif at the top of your readme before you pitch to show you read the instructions thoroughly.
+Timeframes are key in the development cycle. You have limited time to code and so much to accomplish! Look at all of your planned files and components, and all of the areas of development you are planning and give an estimate of how long each one will take to complete. It's always best to pad the time to account for the unknown, so be sure to add an additional hour or two to play it safe. As you progress, you can update the "Time Invested" column to keep track of your hours, but that number should turn into "Actual Time" by the presentation day. Also, put a winter-themed gif at the top of your readme before you pitch to show you read the instructions thoroughly.
 
-
-| Component | Priority | Estimated Time | Time Invested | Actual Time |
-| --- | :---: |  :---: | :---: | :---: |
-| create file structure | H | 3hrs |  |  |
-| fetch/parse API data | H | 8hrs |  |  |
-| code search components/ screen | H | 3hrs |  |  |
-| code/link remaining screens with inherited API data | H | 12 hrs |  |  |
-| Styling | L-M | 8hrs |  |  |
-| Post-MVP | L | 6 hrs |  |  |
-| Total |  | 40 hrs |  |  |
+| Component                                           | Priority | Estimated Time | Time Invested | Actual Time |
+| --------------------------------------------------- | :------: | :------------: | :-----------: | :---------: |
+| create file structure                               |    H     |      3hrs      |     2hrs      |             |
+| fetch/parse API data                                |    H     |      8hrs      |               |             |
+| code search components/ screen                      |    H     |      3hrs      |               |             |
+| code/link remaining screens with inherited API data |    H     |     12 hrs     |     6hrs      |             |
+| Styling                                             |   L-M    |      8hrs      |               |             |
+| Post-MVP                                            |    L     |     6 hrs      |               |             |
+| Total                                               |          |     40 hrs     |               |             |
 
 ## Project Schedule
 
-This schedule will be used to keep track of your progress throughout the week and align with our expectations.  
+This schedule will be used to keep track of your progress throughout the week and align with our expectations.
 
 You are **responsible** for scheduling time with your squad to seek approval for each deliverable by the end of the corresponding day, excluding `Saturday` and `Sunday`.
 
-|  Day | Deliverable | Status
-|---|---| ---|
-|Jan 24th| Project Pitch / Wireframes / Priority Matrix / Functional Components | Incomplete
-|Jan 27th| create/route components with placeholder divs | Incomplete
-|Jan 28th| functioning search bar/API call/data parse to console | Incomplete
-|Jan 29th| render data to DOM | Incomplete
-|Jan 30th| Styling/Post-MVP | Incomplete
-|Jan 31tst| Present | Incomplete
+| Day       | Deliverable                                                          | Status            |
+| --------- | -------------------------------------------------------------------- | ----------------- |
+| Jan 24th  | Project Pitch / Wireframes / Priority Matrix / Functional Components | Complete          |
+| Jan 27th  | create/route components with placeholder divs                        | (nearly) Complete |
+| Jan 28th  | functioning search bar/API call/data parse to console                | Incomplete        |
+| Jan 29th  | render data to DOM                                                   | Incomplete        |
+| Jan 30th  | Styling/Post-MVP                                                     | Incomplete        |
+| Jan 31tst | Present                                                              | Incomplete        |
 
 ## Additional Libraries
 
@@ -153,7 +153,9 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 ## Issues and Resolutions
 
-Use this section to list of all major issues you anticipate encountering during development and how you plan to tackle them. Be sure to update this section during development, documenting the actual resolutions you inacted, as well as any other unexpected obstacles you encountered along the way.
+**27. Jan**
+
+- main screen initially did not update with X-position changes; refactored code to create function in App.js to set state and then call this function in Main.js
 
 ## Code Snippet
 
@@ -168,4 +170,5 @@ function reverse(string) {
 ## Change Log
 
 **24. Jan**
+
 - scrapped plan to structure with CSS grid and instead focus on full-viewport screens

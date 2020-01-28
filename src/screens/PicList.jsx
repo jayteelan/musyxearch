@@ -17,9 +17,14 @@ const PicList = props => {
   return (
     <div className="piclist">
       <h1>{category()}</h1>
-      <ul>
-        <ResultList {...props} />
-      </ul>
+      <ResultList {...props} />
+      <Route
+        exact
+        path="/:release_id"
+        component={props => {
+          return <Release release-id={props.match.params.release_id} />;
+        }}
+      />
     </div>
   );
 };

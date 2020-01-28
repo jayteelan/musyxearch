@@ -18,8 +18,16 @@ class App extends Component {
     this.state = {
       isLoading: true,
       posX: 1,
-      posY: 0,
-      arrX: ["About", "Search", "Artist", "Album", "Single", "Other"],
+      posY: 3,
+      arrX: [
+        "About",
+        "Search",
+        "Artist",
+        "Album",
+        "Single",
+        "Other",
+        "Release"
+      ],
       arrY: [
         "Debut",
         "Post",
@@ -32,7 +40,7 @@ class App extends Component {
         "Utopia"
       ],
       headTitle: "musYXearch",
-      searchInput: "woobly",
+      searchInput: "",
       currentArtist: "fleezle"
     };
     this.reducePosition = this.reducePosition.bind(this);
@@ -51,13 +59,21 @@ class App extends Component {
     }));
   }
 
+  /* ---------- UPDATE searchInput ---------- */
+  handleChange = e => {
+    this.setState({
+      searchInput: e.target.value
+    });
+    // console.log(e.target.value);
+  };
+
   /* ---------- UPDATE currentArtist ---------- */
   setArtist(e) {
     this.setState({ currentArtist: e.target.value });
   }
 
   /* ---------- CHANGE CURRENT SCREEN BASED ON posX ---------- */
-  renderScreen = () => {
+  renderScreenX = () => {
     switch (this.state.posX) {
       case 0:
         // console.log("posX", this.state.posX);
@@ -66,6 +82,7 @@ class App extends Component {
         // console.log("posX", this.state.posX);
         return (
           <Search
+            handleChange={this.handleChange}
             searchInput={this.state.searchInput}
             currentArtist={this.state.currentArtist}
           />
@@ -75,13 +92,33 @@ class App extends Component {
         return <Artist />;
       case 3:
         // console.log("posX", this.state.posX);
-        return <PicList posX={this.state.posX} arr={this.state.arrY} />;
+        return (
+          <PicList
+            {...this.props}
+            posX={this.state.posX}
+            arr={this.state.arrY}
+          />
+        );
       case 4:
         // console.log("posX", this.state.posX);
-        return <PicList posX={this.state.posX} arr={this.state.arrY} />;
+        return (
+          <PicList
+            {...this.props}
+            posX={this.state.posX}
+            arr={this.state.arrY}
+          />
+        );
       case 5:
         // console.log("posX", this.state.posX);
-        return <PicList posX={this.state.posX} arr={this.state.arrY} />;
+        return (
+          <PicList
+            {...this.props}
+            posX={this.state.posX}
+            arr={this.state.arrY}
+          />
+        );
+      case 6:
+        return <Release posX={this.state.posX} arr={this.state.arrY} />;
       default:
         return <p>an unexpected error occurred</p>;
     }
@@ -98,17 +135,19 @@ class App extends Component {
           posY={this.state.posY}
           arrX={this.state.arrX}
           arrY={this.state.arrY}
-          renderScreen={this.renderScreen}
+          renderScreenX={this.renderScreen}
           reducePosition={this.reducePosition}
           increasePosition={this.increasePosition}
         />
         <Main
+          {...this.props}
           isLoading={this.state.isLoading}
           posX={this.state.posX}
           posY={this.state.posY}
           searchInput={this.state.searchInput}
           currentArtist={this.state.currentArtist}
-          renderScreen={this.renderScreen}
+          renderScreenX={this.renderScreenX}
+          handleChange={this.handleChange}
         />
       </div>
     );
