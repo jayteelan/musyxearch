@@ -58,11 +58,16 @@ class App extends Component {
           />
         );
       case 2:
-        return <Artist currentArtist={this.state.currentArtist} />;
+        return (
+          <Artist {...this.props} currentArtist={this.state.currentArtist} />
+        );
       case 3:
         return (
           <PicList
             {...this.props}
+            artist={this.state.currentArtist[1].name}
+            handleDiscography={this.handleDiscography}
+            isLoading={this.state.isLoading}
             posX={this.state.posX}
             posY={this.state.posY}
             arr={this.state.arrY}
@@ -102,18 +107,7 @@ class App extends Component {
       ) : (
         <Release />
       );
-      // } else {
-      //   return (posY = 0);
     }
-    // // return this.state.posY === 0 ? (
-    //   this.renderScreenX()
-    // ) : this.state.posX <= 2 ? (
-    //   this.state.posY === 0
-    // ) : this.state.posY < this.state.arrY.length - 1 ? (
-    //   <Release />
-    // ) : (
-    //   this.state.posY === this.state.arrY.length - 1
-    // );
   };
 
   /* ---------- UPDATE searchInput STATE ---------- */
@@ -134,12 +128,13 @@ class App extends Component {
     const query = this.state.searchInput;
     const artistData = await searchArtist(query);
     this.setCurrentArtist(artistData);
-    console.log(artistData);
+    this.increasePosition("posX");
+    console.log("artistData", artistData);
   };
 
   /* ---------- FETCH DISCOGRAPHY ---------- */
   handleDiscography = async () => {
-    const artist = this.state.currentArtist.name;
+    const artist = this.state.currentArtist[1].name;
     let releaseType = "";
     switch (this.state.posX) {
       case 3:
@@ -156,7 +151,7 @@ class App extends Component {
         break;
     }
     const releaseArr = await fetchDiscography(artist, releaseType);
-    this.setState({ arrY: releaseArr.results });
+    this.setState({ arrY: releaseArr.results, isLoading: false });
     console.log("arrY", this.state.arrY);
   };
 

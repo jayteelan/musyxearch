@@ -14,6 +14,8 @@ export const searchArtist = async query => {
   const artistId = `${URL}database/search?q=${query}&type=artist&key=${discogs.api_key}&secret=${discogs.api_secret}`;
   const res = await axios.get(artistId);
   try {
+    const allInfo = [];
+    allInfo.push(res.data.results[0]);
     console.log("artist id", res.data.results[0].id);
     const retrievedId = res.data.results[0].id;
     if (retrievedId) {
@@ -21,7 +23,8 @@ export const searchArtist = async query => {
       const res2 = await axios.get(artistData);
       try {
         // console.log("artist data", res2.data);
-        return res2.data;
+        allInfo.push(res2.data);
+        return allInfo;
       } catch (err) {
         console.log("error", err);
       }

@@ -123,8 +123,8 @@ Timeframes are key in the development cycle. You have limited time to code and s
 | Component                                           | Priority | Estimated Time | Time Invested | Actual Time |
 | --------------------------------------------------- | :------: | :------------: | :-----------: | :---------: |
 | create file structure                               |    H     |      3hrs      |     2hrs      |             |
-| fetch/parse API data                                |    H     |      8hrs      |               |             |
-| code search components/ screen                      |    H     |      3hrs      |               |             |
+| fetch/parse API data                                |    H     |      8hrs      |     5hrs      |             |
+| code search components/ screen                      |    H     |      3hrs      |     3hrs      |             |
 | code/link remaining screens with inherited API data |    H     |     12 hrs     |     6hrs      |             |
 | Styling                                             |   L-M    |      8hrs      |               |             |
 | Post-MVP                                            |    L     |     6 hrs      |               |             |
@@ -140,7 +140,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 | --------- | -------------------------------------------------------------------- | ----------------- |
 | Jan 24th  | Project Pitch / Wireframes / Priority Matrix / Functional Components | Complete          |
 | Jan 27th  | create/route components with placeholder divs                        | (nearly) Complete |
-| Jan 28th  | functioning search bar/API call/data parse to console                | Incomplete        |
+| Jan 28th  | functioning search bar/API call/data parse to console                | Complete          |
 | Jan 29th  | render data to DOM                                                   | Incomplete        |
 | Jan 30th  | Styling/Post-MVP                                                     | Incomplete        |
 | Jan 31tst | Present                                                              | Incomplete        |
@@ -150,12 +150,14 @@ You are **responsible** for scheduling time with your squad to seek approval for
 - **react-router-dom**: enable navigation between component screens
 - **axios**: retrieve API data
 - **dotenv**: hide API key
+- **react-string-replace**: simplifies string replacement in react
 
 ## Issues and Resolutions
 
 **27. Jan**
 
 - main screen initially did not update with X-position changes; refactored code to create function in App.js to set state and then call this function in Main.js
+- album titles com with artist name attached; discovered that str.replace() does not work in react. installed `react-string-replace` to facilitate renaming, but not yet able to use it in mapped arrays.
 
 ## Code Snippet
 
@@ -168,6 +170,10 @@ function reverse(string) {
 ```
 
 ## Change Log
+
+**28. Jan**
+
+- converted `ResultList` component from functional to class to accomodate changing `isLoading` state to prevent infinite loop
 
 **24. Jan**
 
