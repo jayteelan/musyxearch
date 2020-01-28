@@ -19,27 +19,9 @@ class App extends Component {
     this.state = {
       isLoading: true,
       posX: 1,
-      posY: 3,
-      arrX: [
-        "About",
-        "Search",
-        "Artist",
-        "Album",
-        "Single",
-        "Other",
-        "Release"
-      ],
-      arrY: [
-        "Debut",
-        "Post",
-        "Homogenic",
-        "Vespertine",
-        "Medulla",
-        "Volta",
-        "Biophilia",
-        "Vulnicura",
-        "Utopia"
-      ],
+      posY: 0,
+      arrX: ["About", "Search", "Artist", "Album", "EP", "Single"],
+      arrY: ["jello", "fries", "soda"],
       headTitle: "musYXearch",
       searchInput: "",
       currentArtist: ""
@@ -64,10 +46,8 @@ class App extends Component {
   renderScreenX = () => {
     switch (this.state.posX) {
       case 0:
-        // console.log("posX", this.state.posX);
         return <About />;
       case 1:
-        // console.log("posX", this.state.posX);
         return (
           <Search
             handleInputChange={this.handleInputChange}
@@ -78,21 +58,17 @@ class App extends Component {
           />
         );
       case 2:
-        // console.log("posX", this.state.posX);
         return <Artist currentArtist={this.state.currentArtist} />;
       case 3:
-        // console.log("posX", this.state.posX);
         return (
           <PicList
             {...this.props}
             posX={this.state.posX}
             posY={this.state.posY}
             arr={this.state.arrY}
-            // onShow={this.handleDiscography}
           />
         );
       case 4:
-        // console.log("posX", this.state.posX);
         return (
           <PicList
             {...this.props}
@@ -101,7 +77,6 @@ class App extends Component {
           />
         );
       case 5:
-        // console.log("posX", this.state.posX);
         return (
           <PicList
             {...this.props}
@@ -109,11 +84,36 @@ class App extends Component {
             arr={this.state.arrY}
           />
         );
-      case 6:
-        return <Release posX={this.state.posX} arr={this.state.arrY} />;
       default:
-        return <p>an unexpected error occurred</p>;
+        return console.log("oops");
     }
+  };
+
+  /* ---------- CHANGE CURRENT SCREEN BASED ON posY ---------- */
+  renderScreenY = () => {
+    const posX = this.state.posX;
+    let posY = this.state.posY;
+    let maxY = this.state.arrY.length;
+    if (posY <= maxY) {
+      return posY === 0 ? (
+        this.renderScreenX()
+      ) : posX <= 2 ? (
+        (posY = 0)
+      ) : (
+        <Release />
+      );
+      // } else {
+      //   return (posY = 0);
+    }
+    // // return this.state.posY === 0 ? (
+    //   this.renderScreenX()
+    // ) : this.state.posX <= 2 ? (
+    //   this.state.posY === 0
+    // ) : this.state.posY < this.state.arrY.length - 1 ? (
+    //   <Release />
+    // ) : (
+    //   this.state.posY === this.state.arrY.length - 1
+    // );
   };
 
   /* ---------- UPDATE searchInput STATE ---------- */
@@ -135,21 +135,29 @@ class App extends Component {
     const artistData = await searchArtist(query);
     this.setCurrentArtist(artistData);
     console.log(artistData);
-    this.handleDiscography();
   };
 
   /* ---------- FETCH DISCOGRAPHY ---------- */
-  // this.state.posX determines format
   handleDiscography = async () => {
     const artist = this.state.currentArtist.name;
-    console.log("woot", artist);
-    const albumList = await fetchDiscography(artist, "album");
-    this.setState({ arrY: albumList.results });
+    let releaseType = "";
+    switch (this.state.posX) {
+      case 3:
+        releaseType = "album";
+        break;
+      case 4:
+        releaseType = "EP";
+        break;
+      case 5:
+        releaseType = "single";
+        break;
+      default:
+        releaseType = "album";
+        break;
+    }
+    const releaseArr = await fetchDiscography(artist, releaseType);
+    this.setState({ arrY: releaseArr.results });
     console.log("arrY", this.state.arrY);
-    // switch (this.state.posX) {
-    // 	case 3:
-    // 		this.setState()
-    // }
   };
 
   /* ---------- RENDER ---------- */
@@ -163,7 +171,9 @@ class App extends Component {
           posY={this.state.posY}
           arrX={this.state.arrX}
           arrY={this.state.arrY}
+          handleDiscography={this.handleDiscography}
           renderScreenX={this.renderScreen}
+          renderScreenY={this.renderScreenY}
           reducePosition={this.reducePosition}
           increasePosition={this.increasePosition}
         />
@@ -175,6 +185,7 @@ class App extends Component {
           searchInput={this.state.searchInput}
           currentArtist={this.state.currentArtist}
           renderScreenX={this.renderScreenX}
+          renderScreenY={this.renderScreenY}
           handleInputChange={this.handleInputChange}
         />
       </div>

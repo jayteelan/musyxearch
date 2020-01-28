@@ -11,6 +11,7 @@ class Release extends Component {
 
   /* ---------- RENDER ---------- */
   render() {
+    console.log("release");
     return (
       <div className="release">
         <h1>RELEASE</h1>

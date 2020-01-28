@@ -4,27 +4,29 @@ import ResultList from "../components/ResultList";
 import Release from "./Release";
 
 const PicList = props => {
-  console.log("picList", props);
+  // console.log("picList", props);
+
   const category = () => {
     if (props.posX === 3) {
       return "Albums";
     } else if (props.posX === 4) {
-      return "Singles and EPs";
+      return "EPs";
     } else if (props.posX === 5) {
-      return "Other Releases";
+      return "Singles";
     }
   };
+
   return (
     <div className="piclist">
       <h1>{category()}</h1>
       <ResultList {...props} />
-      <Route
+      {/* <Route
         exact
         path="/:release_id"
         component={props => {
           return <Release release-id={props.match.params.release_id} />;
         }}
-      />
+      /> */}
     </div>
   );
 };

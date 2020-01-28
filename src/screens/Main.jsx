@@ -6,7 +6,7 @@ const Main = props => {
   return (
     <div className="Main">
       <h1>MAIN</h1>
-      {props.renderScreenX()}
+      {props.renderScreenY()}
     </div>
   );
 };
