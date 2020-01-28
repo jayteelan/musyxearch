@@ -10,15 +10,24 @@ const discogs = {
 const URL = "https://api.discogs.com/";
 
 export const searchArtist = async query => {
+  // with assistance from (https://stackoverflow.com/questions/47343225/making-2-sequential-requests-with-axios-second-request-depends-on-the-response)
   const artistId = `${URL}database/search?q=${query}&type=artist&key=${discogs.api_key}&secret=${discogs.api_secret}`;
   const res = await axios.get(artistId);
-  console.log("artist id", res.data.results[0].id);
-  const retrievedId = res.data.results[0].id;
-  if (retrievedId) {
-    const artistData = `${URL}artists/${retrievedId}`;
-    const res2 = await axios.get(artistData);
-    console.log("artist data", res2.data);
-    return res2.data;
+  try {
+    console.log("artist id", res.data.results[0].id);
+    const retrievedId = res.data.results[0].id;
+    if (retrievedId) {
+      const artistData = `${URL}artists/${retrievedId}`;
+      const res2 = await axios.get(artistData);
+      try {
+        // console.log("artist data", res2.data);
+        return res2.data;
+      } catch (err) {
+        console.log("error", err);
+      }
+    }
+  } catch (err) {
+    console.log("error", err);
   }
 };
 

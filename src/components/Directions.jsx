@@ -4,7 +4,7 @@ import { Route, Link } from "react-router-dom";
 class Directions extends Component {
   constructor(props) {
     super(props);
-    console.log("direction", props);
+    // console.log("direction", props);
     this.goUp = this.goUp.bind(this);
     this.goDown = this.goDown.bind(this);
   }

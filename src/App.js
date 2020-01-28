@@ -6,6 +6,7 @@ import Main from "./screens/Main";
 import Directions from "./components/Directions";
 import Header from "./components/Header";
 
+import { searchArtist, fetchDiscography } from "./API";
 import About from "./screens/About";
 import Artist from "./screens/Artist";
 import PicList from "./screens/PicList";
@@ -41,7 +42,7 @@ class App extends Component {
       ],
       headTitle: "musYXearch",
       searchInput: "",
-      currentArtist: "fleezle"
+      currentArtist: ""
     };
     this.reducePosition = this.reducePosition.bind(this);
     this.increasePosition = this.increasePosition.bind(this);
@@ -64,13 +65,20 @@ class App extends Component {
     this.setState({
       searchInput: e.target.value
     });
-    // console.log(e.target.value);
   };
 
   /* ---------- UPDATE currentArtist ---------- */
-  setArtist(e) {
-    this.setState({ currentArtist: e.target.value });
-  }
+  setCurrentArtist = data => {
+    this.setState({ currentArtist: data });
+  };
+
+  /* ---------- FETCH ARTIST DATA ---------- */
+  handleSubmit = async e => {
+    e.preventDefault();
+    const query = this.state.searchInput;
+    const artistData = await searchArtist(query);
+    this.setCurrentArtist(artistData);
+  };
 
   /* ---------- CHANGE CURRENT SCREEN BASED ON posX ---------- */
   renderScreenX = () => {
@@ -83,6 +91,8 @@ class App extends Component {
         return (
           <Search
             handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            setCurrentArtist={this.setCurrentArtist}
             searchInput={this.state.searchInput}
             currentArtist={this.state.currentArtist}
           />
