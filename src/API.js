@@ -45,3 +45,15 @@ export const fetchDiscography = async (query, format) => {
     console.log("error", err);
   }
 };
+
+export const fetchRelease = async query => {
+  try {
+    const res = await axios.get(
+      `${URL}masters/${query}?key=${discogs.api_key}&secret=${discogs.api_secret}`
+    );
+    console.log(res.data);
+    return res.data;
+  } catch (err) {
+    console.log("error", err);
+  }
+};

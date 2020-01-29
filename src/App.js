@@ -6,7 +6,7 @@ import Main from "./screens/Main";
 import Directions from "./components/Directions";
 import Header from "./components/Header";
 
-import { searchArtist, fetchDiscography } from "./API";
+import { searchArtist, fetchDiscography, fetchRelease } from "./API";
 import About from "./screens/About";
 import Artist from "./screens/Artist";
 import PicList from "./screens/PicList";
@@ -24,7 +24,8 @@ class App extends Component {
       arrY: ["jello", "fries", "soda"],
       headTitle: "musYXearch",
       searchInput: "",
-      currentArtist: ""
+      currentArtist: "",
+      currentRelease: []
     };
     this.reducePosition = this.reducePosition.bind(this);
     this.increasePosition = this.increasePosition.bind(this);
@@ -44,6 +45,19 @@ class App extends Component {
 
   /* ---------- CHANGE CURRENT SCREEN BASED ON posX ---------- */
   renderScreenX = () => {
+    // <Switch>
+    //   <Route exact path="/about" Component={About} />
+    //   <Route exact path="/search">
+    //     <Search
+    //       handleInputChange={this.handleInputChange}
+    //       handleSubmit={this.handleSubmit}
+    //       setCurrentArtist={this.setCurrentArtist}
+    //       searchInput={this.state.searchInput}
+    //       currentArtist={this.state.currentArtist}
+    //     />
+    //   </Route>
+    // </Switch>
+
     switch (this.state.posX) {
       case 0:
         return <About />;
@@ -90,7 +104,6 @@ class App extends Component {
           />
         );
       default:
-        return console.log("oops");
     }
   };
 
@@ -155,6 +168,13 @@ class App extends Component {
     console.log("arrY", this.state.arrY);
   };
 
+  /* ---------- FETCH RELEASE DATA ---------- */
+  // handleRelease = async () => {
+  //   const releaseDeets = await fetchRelease(release_id);
+  //   this.setState({ currentRelease: releaseDeets.results, isLoading: false });
+  //   console.log("handleRelease", this.state.currentRelease);
+  // };
+
   /* ---------- RENDER ---------- */
   render() {
     return (
@@ -172,17 +192,34 @@ class App extends Component {
           reducePosition={this.reducePosition}
           increasePosition={this.increasePosition}
         />
-        <Main
-          {...this.props}
-          isLoading={this.state.isLoading}
-          posX={this.state.posX}
-          posY={this.state.posY}
-          searchInput={this.state.searchInput}
-          currentArtist={this.state.currentArtist}
-          renderScreenX={this.renderScreenX}
-          renderScreenY={this.renderScreenY}
-          handleInputChange={this.handleInputChange}
-        />
+        {/* thanks to Corey for figuring out this switchy workaround to get the release screen to render properly */}
+        <Switch>
+          <Route exact path="/">
+            <Main
+              {...this.props}
+              isLoading={this.state.isLoading}
+              posX={this.state.posX}
+              posY={this.state.posY}
+              searchInput={this.state.searchInput}
+              currentArtist={this.state.currentArtist}
+              renderScreenX={this.renderScreenX}
+              renderScreenY={this.renderScreenY}
+              handleInputChange={this.handleInputChange}
+            />
+          </Route>
+          <Route
+            exact
+            path="/releases/:release_id"
+            component={match => (
+              <Release
+                {...this.props}
+                match={match}
+                handleRelease={this.handleRelease}
+                currentRelease={this.state.currentRelease}
+              />
+            )}
+          />
+        </Switch>
       </div>
     );
   }
