@@ -4,7 +4,7 @@ import SearchForm from "../components/SearchForm";
 class Search extends Component {
   constructor(props) {
     super(props);
-    console.log("search", props);
+    // console.log("search", props);
 
     this.state = {};
   }

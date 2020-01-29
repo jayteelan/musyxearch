@@ -123,9 +123,9 @@ Timeframes are key in the development cycle. You have limited time to code and s
 | Component                                           | Priority | Estimated Time | Time Invested | Actual Time |
 | --------------------------------------------------- | :------: | :------------: | :-----------: | :---------: |
 | create file structure                               |    H     |      3hrs      |     2hrs      |             |
-| fetch/parse API data                                |    H     |      8hrs      |     5hrs      |             |
+| fetch/parse API data                                |    H     |      8hrs      |     7hrs      |             |
 | code search components/ screen                      |    H     |      3hrs      |     3hrs      |             |
-| code/link remaining screens with inherited API data |    H     |     12 hrs     |     6hrs      |             |
+| code/link remaining screens with inherited API data |    H     |     12 hrs     |     8hrs      |             |
 | Styling                                             |   L-M    |      8hrs      |               |             |
 | Post-MVP                                            |    L     |     6 hrs      |               |             |
 | Total                                               |          |     40 hrs     |               |             |
@@ -150,7 +150,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 - **react-router-dom**: enable navigation between component screens
 - **axios**: retrieve API data
 - **dotenv**: hide API key
-- **react-string-replace**: simplifies string replacement in react
+- [**react-string-replace**](https://www.npmjs.com/package/react-string-replace): simplifies string replacement in react
 
 ## Issues and Resolutions
 

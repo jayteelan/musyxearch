@@ -16,7 +16,7 @@ export const searchArtist = async query => {
   try {
     const allInfo = [];
     allInfo.push(res.data.results[0]);
-    console.log("artist id", res.data.results[0].id);
+    // console.log("artist id", res.data.results[0].id);
     const retrievedId = res.data.results[0].id;
     if (retrievedId) {
       const artistData = `${URL}artists/${retrievedId}`;
@@ -39,7 +39,7 @@ export const fetchDiscography = async (query, format) => {
     const res = await axios.get(
       `${URL}database/search?artist=${query}&type=master&format=${format}&sort=year&sort_order=asc&key=${discogs.api_key}&secret=${discogs.api_secret}`
     );
-    console.log("res", res.data.results);
+    // console.log("res", res.data.results);
     return res.data;
   } catch (err) {
     console.log("error", err);

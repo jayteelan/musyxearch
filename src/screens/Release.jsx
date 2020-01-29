@@ -6,26 +6,35 @@ class Release extends Component {
   constructor(props) {
     super(props);
     // console.log("release", props.match.match.params.release_id);
+    this.state = {
+      releaseLoad: false
+    };
   }
+
+  /* ---------- FETCH RELEASE DATA ---------- */
   handleRelease = async () => {
     const releaseDeets = await fetchRelease(
       this.props.match.match.params.release_id
     );
-    this.setState({ currentRelease: releaseDeets.results, isLoading: false });
-    console.log("handleRelease", this.props.arrY);
+    this.setState({ demDeets: releaseDeets, releaseLoad: true });
   };
 
   componentDidMount() {
     this.handleRelease();
   }
+  // }
 
   /* ---------- RENDER ---------- */
   render() {
-    console.log("props", this.props.currentRelease);
+    console.log("render", this.state.releaseLoad, this.state.demDeets);
     return (
       <div className="release">
-        <h1>RELEASE</h1>
-        <TrackList />
+        <h1>{this.state.releaseLoad && this.state.demDeets.title}</h1>
+        <p>{this.state.releaseLoad && this.state.demDeets.title}</p>
+        <TrackList
+          demDeets={this.state.demDeets}
+          releaseLoad={this.state.releaseLoad}
+        />
       </div>
     );
   }

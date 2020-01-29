@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class SearchForm extends Component {
   constructor(props) {
     super(props);
-    console.log("form", props);
+    // console.log("form", props);
   }
 
   render() {

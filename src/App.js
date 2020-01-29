@@ -168,13 +168,6 @@ class App extends Component {
     console.log("arrY", this.state.arrY);
   };
 
-  /* ---------- FETCH RELEASE DATA ---------- */
-  // handleRelease = async () => {
-  //   const releaseDeets = await fetchRelease(release_id);
-  //   this.setState({ currentRelease: releaseDeets.results, isLoading: false });
-  //   console.log("handleRelease", this.state.currentRelease);
-  // };
-
   /* ---------- RENDER ---------- */
   render() {
     return (
@@ -217,6 +210,7 @@ class App extends Component {
                 handleRelease={this.handleRelease}
                 currentRelease={this.state.currentRelease}
                 arrY={this.state.arrY}
+                isLoading={this.state.isLoading}
               />
             )}
           />

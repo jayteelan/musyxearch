@@ -1,7 +1,7 @@
 import React from "react";
 
 const Artist = props => {
-  console.log("artist", props);
+  // console.log("artist", props);
   return (
     <div className="artist">
       <h1>{props.currentArtist[0].title}</h1>
