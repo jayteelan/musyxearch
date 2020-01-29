@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
-// import Release from "../screens/Release";
 import reactStringReplace from "react-string-replace";
 
 class PicListItem extends Component {
@@ -11,28 +10,27 @@ class PicListItem extends Component {
     };
   }
 
+  /* ---------- RETRIEVE RELEASES FIRST TIME PicList RENDERS ---------- */
   componentDidMount() {
     console.log("mount");
-    // console.log("cat", this.props);
     this.props.handleDiscography();
-    this.setState({ isLoading: false });
+    this.setState({ arrY: this.props.arr, isLoading: false });
   }
+  /* ---------- RETRIEVE RELEASES IF posX CHANGES AND RE-RENDER ---------- */
   componentDidUpdate() {
     if (this.props.posX != this.state.pos) {
       console.log(this.props.posX);
       this.props.handleDiscography();
       this.setState({
-        pos: this.props.posX
+        pos: this.props.posX,
+        arrY: this.props.arr
       });
     }
-    // console.log(this.props.category());
-    // this.props.handleDiscography(this.props.artist, `${this.props.category}`);
-    // this.setState({ isLoading: false });
   }
 
+  /* ---------- RENDER ---------- */
   render() {
     const albums = this.props.arr;
-
     return (
       <div className="li">
         {albums.map(album => {

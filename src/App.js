@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Main from "./screens/Main";
@@ -56,19 +55,6 @@ class App extends Component {
 
   /* ---------- CHANGE CURRENT SCREEN BASED ON posX ---------- */
   renderScreenX = () => {
-    // <Switch>
-    //   <Route exact path="/about" Component={About} />
-    //   <Route exact path="/search">
-    //     <Search
-    //       handleInputChange={this.handleInputChange}
-    //       handleSubmit={this.handleSubmit}
-    //       setCurrentArtist={this.setCurrentArtist}
-    //       searchInput={this.state.searchInput}
-    //       currentArtist={this.state.currentArtist}
-    //     />
-    //   </Route>
-    // </Switch>
-
     switch (this.state.posX) {
       case 0:
         return <About />;
@@ -100,7 +86,7 @@ class App extends Component {
         );
       case 4:
         {
-          console.log("state 4");
+          // console.log("state 4");
         }
         return (
           <PicList
@@ -137,7 +123,7 @@ class App extends Component {
     if (posY <= maxY) {
       return posY === 0 ? (
         this.renderScreenX()
-      ) : posX <= 2 ? (
+      ) : posX < 2 ? (
         (posY = 0)
       ) : (
         <Release {...this.props} currentArtist={this.state.currentArtist} />
@@ -164,21 +150,21 @@ class App extends Component {
     const artistData = await searchArtist(query);
     this.setCurrentArtist(artistData);
     this.increasePosition("posX");
-    console.log("artistData", artistData);
+    // console.log("artistData", artistData);
   };
 
   /* ---------- FETCH DISCOGRAPHY ---------- */
   handleDiscography = async () => {
-    console.log("handleDiscography", this.state.posX);
+    // console.log("handleDiscography", this.state.posX);
     const artist = this.state.currentArtist[1].name;
     let releaseType = "";
     switch (this.state.posX) {
       case 3:
-        console.log("here 3");
+        // console.log("here 3");
         releaseType = "album";
         break;
       case 4:
-        console.log("now here 4");
+        // console.log("now here 4");
         releaseType = "EP";
         break;
       case 5:
@@ -190,7 +176,7 @@ class App extends Component {
     }
     const releaseArr = await fetchDiscography(artist, releaseType);
     this.setState({ arrY: releaseArr.results, isLoading: false });
-    console.log("arrY", this.state.arrY);
+    // console.log("arrY", this.state.arrY);
   };
 
   /* ---------- RENDER ---------- */
@@ -204,6 +190,7 @@ class App extends Component {
           posY={this.state.posY}
           arrX={this.state.arrX}
           arrY={this.state.arrY}
+          currentArtist={this.state.currentArtist}
           handleDiscography={this.handleDiscography}
           renderScreenX={this.renderScreen}
           renderScreenY={this.renderScreenY}

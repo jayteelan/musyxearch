@@ -9,6 +9,7 @@ const discogs = {
 
 const URL = "https://api.discogs.com/";
 
+/* ---------- SEARCH FOR AN ARTIST AND RETRIEVE PROFILE INFO ---------- */
 export const searchArtist = async query => {
   // with assistance from (https://stackoverflow.com/questions/47343225/making-2-sequential-requests-with-axios-second-request-depends-on-the-response)
   const artistId = `${URL}database/search?q=${query}&type=artist&key=${discogs.api_key}&secret=${discogs.api_secret}`;
@@ -32,6 +33,7 @@ export const searchArtist = async query => {
   }
 };
 
+/* ---------- GET AN ARTIST'S RELEASES IN A SPECIFIC CATEGORY ---------- */
 export const fetchDiscography = async (query, format) => {
   try {
     const res = await axios.get(
@@ -43,6 +45,7 @@ export const fetchDiscography = async (query, format) => {
   }
 };
 
+/* ---------- GET DETAILED INFORMATION ABOUT A SPECIFIC RELEASE ---------- */
 export const fetchRelease = async query => {
   try {
     const res = await axios.get(

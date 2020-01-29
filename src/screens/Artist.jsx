@@ -2,6 +2,8 @@ import React from "react";
 
 const Artist = props => {
   // console.log("artist", props);
+  console.log("current position (X,Y)", props.posX, props.posY);
+
   return (
     <div className="artist">
       <h1>{props.currentArtist[0].title}</h1>
