@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Main from "./screens/Main";
 import Directions from "./components/Directions";
@@ -105,7 +105,7 @@ class App extends Component {
       ) : posX <= 2 ? (
         (posY = 0)
       ) : (
-        <Release />
+        <Release {...this.props} currentArtist={this.state.currentArtist} />
       );
     }
   };

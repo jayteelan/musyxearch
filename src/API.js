@@ -35,9 +35,13 @@ export const searchArtist = async query => {
 };
 
 export const fetchDiscography = async (query, format) => {
-  const res = await axios.get(
-    `${URL}database/search?artist=${query}&type=master&format=${format}&sort=year&sort_order=asc&key=${discogs.api_key}&secret=${discogs.api_secret}`
-  );
-  console.log("res", res.data.results);
-  return res.data;
+  try {
+    const res = await axios.get(
+      `${URL}database/search?artist=${query}&type=master&format=${format}&sort=year&sort_order=asc&key=${discogs.api_key}&secret=${discogs.api_secret}`
+    );
+    console.log("res", res.data.results);
+    return res.data;
+  } catch (err) {
+    console.log("error", err);
+  }
 };

@@ -7,8 +7,6 @@ class Release extends Component {
     console.log("release", props);
   }
 
-  // RELEASE COMPONENT NEEDS TO CHANGE posY on render
-
   /* ---------- RENDER ---------- */
   render() {
     console.log("release");

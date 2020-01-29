@@ -16,17 +16,27 @@ const PicList = props => {
     }
   };
 
+  // const handleLoading = () => {
+  //   return props.isLoading === true ? (
+  //     <h1>Loading...</h1>
+  //   ) : (
+  //     <ResultList {...props} />
+  //   );
+  // };
+
   return (
     <div className="piclist">
       <h1>{category()}</h1>
+      {/* {handleLoading()} */}
+
       <ResultList {...props} />
-      {/* <Route
+      <Route
         exact
-        path="/:release_id"
+        path="/releases/:release_id"
         component={props => {
           return <Release release-id={props.match.params.release_id} />;
         }}
-      /> */}
+      />
     </div>
   );
 };
