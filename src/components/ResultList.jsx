@@ -12,15 +12,21 @@ class ResultList extends Component {
     this.props.handleDiscography(this.props.artist, "album");
     this.setState({ isLoading: false });
   }
-  parseTitle = title => {
-    reactStringReplace(`${title}`, `${this.props.artist} - `, () => "");
-  };
+  // parseTitle = title => {
+  //   reactStringReplace(`${title}`, `${this.props.artist} - `, () => "");
+  // };
   render() {
     // const artist = this.props.artist;
     const albums = this.props.arr;
-    const parsedAlbums = albums.map(album => this.parseTitle(`${album.title}`));
+    // const parsedAlbums = albums.map(album => {
+    //   return `${reactStringReplace(
+    //     album.title,
+    //     `${this.props.artist} - `,
+    //     () => ""
+    //   )}`;
+    // });
 
-    console.log(parsedAlbums);
+    // console.log("parsed", parsedAlbums);
 
     return (
       <div className="li">
@@ -29,8 +35,14 @@ class ResultList extends Component {
             <li key={album.id} id={album.id}>
               <Link to={`/releases/${album.id}`}>
                 <img src={album.thumb} alt="thumbnail" />{" "}
-                {!this.props.isLoading && album.title}
+                {/* {!this.props.isLoading && album.title} */}
                 {/* {this.parseTitle({ [album.title]})} */}
+                {!this.props.isLoading &&
+                  `${reactStringReplace(
+                    album.title,
+                    `${this.props.artist} - `,
+                    () => ""
+                  )}`}
                 {!this.props.isLoading && album.year}
               </Link>
             </li>

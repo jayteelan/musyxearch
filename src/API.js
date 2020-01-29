@@ -51,7 +51,7 @@ export const fetchRelease = async query => {
     const res = await axios.get(
       `${URL}masters/${query}?key=${discogs.api_key}&secret=${discogs.api_secret}`
     );
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   } catch (err) {
     console.log("error", err);

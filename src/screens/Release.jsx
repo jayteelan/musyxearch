@@ -12,7 +12,7 @@ class Release extends Component {
       this.props.match.match.params.release_id
     );
     this.setState({ currentRelease: releaseDeets.results, isLoading: false });
-    console.log("handleRelease", this.state.currentRelease);
+    console.log("handleRelease", this.props.arrY);
   };
 
   componentDidMount() {

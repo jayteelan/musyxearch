@@ -21,7 +21,7 @@ class App extends Component {
       posX: 1,
       posY: 0,
       arrX: ["About", "Search", "Artist", "Album", "EP", "Single"],
-      arrY: ["jello", "fries", "soda"],
+      arrY: [],
       headTitle: "musYXearch",
       searchInput: "",
       currentArtist: "",
@@ -216,6 +216,7 @@ class App extends Component {
                 match={match}
                 handleRelease={this.handleRelease}
                 currentRelease={this.state.currentRelease}
+                arrY={this.state.arrY}
               />
             )}
           />
