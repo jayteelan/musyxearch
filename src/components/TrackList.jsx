@@ -13,7 +13,7 @@ const TrackList = props => {
       {props.guard &&
         props.tracks.map(track => {
           return (
-            <li>
+            <li key={track.position}>
               <span className="track-title">{props.guard && track.title}</span>
               <span className="running-time">{showTime(track)}</span>
             </li>

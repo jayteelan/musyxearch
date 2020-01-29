@@ -43,6 +43,17 @@ class App extends Component {
     }));
   }
 
+  /* ---------- DETERMINE RELEASE CATEGORY ---------- */
+  category = () => {
+    if (this.state.posX === 3) {
+      return "album";
+    } else if (this.state.posX === 4) {
+      return "EP";
+    } else if (this.state.posX === 5) {
+      return "single";
+    }
+  };
+
   /* ---------- CHANGE CURRENT SCREEN BASED ON posX ---------- */
   renderScreenX = () => {
     // <Switch>
@@ -79,8 +90,8 @@ class App extends Component {
         return (
           <PicList
             {...this.props}
-            artist={this.state.currentArtist[1].name}
             handleDiscography={this.handleDiscography}
+            category={this.category}
             isLoading={this.state.isLoading}
             posX={this.state.posX}
             posY={this.state.posY}
@@ -88,10 +99,17 @@ class App extends Component {
           />
         );
       case 4:
+        {
+          console.log("state 4");
+        }
         return (
           <PicList
             {...this.props}
+            handleDiscography={this.handleDiscography}
+            category={this.category}
+            isLoading={this.state.isLoading}
             posX={this.state.posX}
+            posY={this.state.posY}
             arr={this.state.arrY}
           />
         );
@@ -99,7 +117,11 @@ class App extends Component {
         return (
           <PicList
             {...this.props}
+            handleDiscography={this.handleDiscography}
+            category={this.category}
+            isLoading={this.state.isLoading}
             posX={this.state.posX}
+            posY={this.state.posY}
             arr={this.state.arrY}
           />
         );
@@ -147,13 +169,16 @@ class App extends Component {
 
   /* ---------- FETCH DISCOGRAPHY ---------- */
   handleDiscography = async () => {
+    console.log("handleDiscography", this.state.posX);
     const artist = this.state.currentArtist[1].name;
     let releaseType = "";
     switch (this.state.posX) {
       case 3:
+        console.log("here 3");
         releaseType = "album";
         break;
       case 4:
+        console.log("now here 4");
         releaseType = "EP";
         break;
       case 5:

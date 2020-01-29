@@ -3,14 +3,31 @@ import { Route, Link } from "react-router-dom";
 // import Release from "../screens/Release";
 import reactStringReplace from "react-string-replace";
 
-class ResultList extends Component {
+class PicListItem extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      pos: 3
+    };
   }
 
   componentDidMount() {
-    this.props.handleDiscography(this.props.artist, "album");
+    console.log("mount");
+    // console.log("cat", this.props);
+    this.props.handleDiscography();
     this.setState({ isLoading: false });
+  }
+  componentDidUpdate() {
+    if (this.props.posX != this.state.pos) {
+      console.log(this.props.posX);
+      this.props.handleDiscography();
+      this.setState({
+        pos: this.props.posX
+      });
+    }
+    // console.log(this.props.category());
+    // this.props.handleDiscography(this.props.artist, `${this.props.category}`);
+    // this.setState({ isLoading: false });
   }
 
   render() {
@@ -40,4 +57,4 @@ class ResultList extends Component {
   }
 }
 
-export default ResultList;
+export default PicListItem;
