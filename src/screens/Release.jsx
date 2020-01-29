@@ -27,14 +27,14 @@ class Release extends Component {
   /* ---------- RENDER ---------- */
   render() {
     console.log("render", this.state.releaseLoad, this.state.demDeets);
+    const info = this.state.demDeets;
+    const guard = this.state.releaseLoad;
     return (
       <div className="release">
-        <h1>{this.state.releaseLoad && this.state.demDeets.title}</h1>
-        <p>{this.state.releaseLoad && this.state.demDeets.title}</p>
-        <TrackList
-          demDeets={this.state.demDeets}
-          releaseLoad={this.state.releaseLoad}
-        />
+        <img src={guard && info.images[0].resource_url} />
+        <h1>{guard && info.title}</h1>
+        <p>released {guard && info.year}</p>
+        <TrackList tracks={guard && info.tracklist} guard={guard} />
       </div>
     );
   }
