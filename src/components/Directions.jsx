@@ -20,7 +20,7 @@ class Directions extends Component {
   goDown = e => {
     // console.log("Y", this.props.posY);
     console.log("arrY", this.props.arrY.length);
-    if (this.props.posY > 2 && this.props.posY < this.props.arrY.length) {
+    if (this.props.posX > 2 && this.props.posY < this.props.arrY.length) {
       this.props.increasePosition("posY");
     } else {
       this.setState({ posY: 0 });

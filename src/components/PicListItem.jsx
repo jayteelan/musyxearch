@@ -33,9 +33,9 @@ class PicListItem extends Component {
     const albums = this.props.arr;
     return (
       <div className="li">
-        {albums.map(album => {
+        {albums.map((album, i) => {
           return (
-            <li key={album.id} id={album.id}>
+            <li key={`index${i}`} id={album.id}>
               <Link to={`/releases/${album.id}`}>
                 <img src={album.thumb} alt="thumbnail" />{" "}
                 {!this.props.isLoading &&

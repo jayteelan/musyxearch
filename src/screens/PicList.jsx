@@ -12,9 +12,11 @@ const PicList = props => {
       <PicListItem {...props} />
       <Route
         exact
-        path="/:release_id"
+        path="/releases/:release_id"
         component={props => {
-          return <Release release-id={props.match.params.release_id} />;
+          return (
+            <Release {...props} release_id={props.match.params.release_id} />
+          );
         }}
       />
     </div>
