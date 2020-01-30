@@ -73,32 +73,32 @@ class App extends Component {
           <Artist {...this.props} currentArtist={this.state.currentArtist} />
         );
       case 3:
-        return (
-          <PicList
-            {...this.props}
-            handleDiscography={this.handleDiscography}
-            category={this.category}
-            isLoading={this.state.isLoading}
-            posX={this.state.posX}
-            posY={this.state.posY}
-            arr={this.state.arrY}
-          />
-        );
+      // return (
+      //   <PicList
+      //     {...this.props}
+      //     handleDiscography={this.handleDiscography}
+      //     category={this.category}
+      //     isLoading={this.state.isLoading}
+      //     posX={this.state.posX}
+      //     posY={this.state.posY}
+      //     arr={this.state.arrY}
+      //   />
+      // );
       case 4:
-        {
-          // console.log("state 4");
-        }
-        return (
-          <PicList
-            {...this.props}
-            handleDiscography={this.handleDiscography}
-            category={this.category}
-            isLoading={this.state.isLoading}
-            posX={this.state.posX}
-            posY={this.state.posY}
-            arr={this.state.arrY}
-          />
-        );
+      // {
+      //   // console.log("state 4");
+      // }
+      // return (
+      //   <PicList
+      //     {...this.props}
+      //     handleDiscography={this.handleDiscography}
+      //     category={this.category}
+      //     isLoading={this.state.isLoading}
+      //     posX={this.state.posX}
+      //     posY={this.state.posY}
+      //     arr={this.state.arrY}
+      //   />
+      // );
       case 5:
         return (
           <PicList

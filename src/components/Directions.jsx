@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, Redirect } from "react-router-dom";
 import Release from "../screens/Release";
 
 class Directions extends Component {
@@ -26,15 +26,6 @@ class Directions extends Component {
     console.log("arrY", this.props.arrY.length);
     if (this.props.posX > 2 && this.props.posY < this.props.arrY.length) {
       this.props.increasePosition("posY");
-      // go to arrY[posY+1].id
-      const nextIndex = this.props.posY + 1;
-      console.log("next", nextIndex);
-      const nextReleaseId = this.props.arrY[nextIndex].id;
-      console.log("nextID", nextReleaseId);
-      // e.preventDefault();
-      console.log("props", this.props);
-
-      this.props.match.history.push(`/releases/${nextReleaseId}`);
     } else {
       this.setState({ posY: 0 });
     }
@@ -63,6 +54,16 @@ class Directions extends Component {
   };
   /* ---------- RENDER ---------- */
   render() {
+    const nextRelease = e => {
+      if (this.props.posX > 2) {
+        this.props.increasePosition("posY");
+        const nextIndex = this.props.posY + 1;
+        const nextReleaseId = this.props.arrY[nextIndex].id;
+        return <Redirect to="/releases/nextReleaseId" />;
+      } else {
+        this.goDown();
+      }
+    };
     return (
       // conditional rendering for pos=0 or pos=arr.length-1
       <div className="directions">
@@ -76,7 +77,7 @@ class Directions extends Component {
         <i className="material-icons" onClick={e => this.goRight(e)}>
           arrow_forward
         </i>
-        <i className="material-icons" onClick={e => this.goDown(e)}>
+        <i className="material-icons" onClick={e => this.nextRelease(e)}>
           arrow_downward
         </i>
       </div>
