@@ -6,22 +6,21 @@
   z-index: 3;
   font-size: 2em;
   position: fixed;
-  top: 2rem;
-  right: 2rem;
+  top: 1.5rem;
+  right: 1.5rem;
   transition: all 0.2s ease;
 }
 .close:hover {
   color: red;
+  cursor: pointer;
   font-size: 3em;
   font-weight: 600;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1.25rem;
+  right: 1.25rem;
   transform: rotate(90deg);
 }
 .track-list {
   list-style: none;
-  display: flex;
-  flex-direction: column;
 }
 .track-list li {
   flex-direction: row;

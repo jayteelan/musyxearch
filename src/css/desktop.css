@@ -1,0 +1,27 @@
+/* ----- MEDIUM -----*/
+@media only screen and (min-width: 768px) {
+  .release,
+  .artist {
+    display: grid;
+    width: 90vw;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3rem 1fr;
+  }
+
+  .grid-title {
+    grid-area: 1 / 1 / 2/ 3;
+  }
+
+  .grid-pic {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .grid-text {
+    grid-area: 2 / 2 / 3 / 3;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-left: 2rem;
+  }
+}

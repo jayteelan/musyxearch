@@ -8,7 +8,7 @@ body {
   background-attachment: fixed;
   font-family: "Maven Pro", sans-serif;
   font-size: 16px;
-  padding: 2rem;
+  margin: 2rem;
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
@@ -42,4 +42,29 @@ ul {
   text-align: justify;
   line-height: 1.2;
   padding: 0.3rem;
+}
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #2e4045;
+  transition: all 0.2s ease;
+}
+a:hover {
+  color: #83adb5;
+}
+button:hover {
+  cursor: pointer;
+}
+/* ----- MEDIUM -----*/
+@media only screen and (min-width: 768px) {
+  body {
+    flex-direction: row;
+  }
+  img {
+    max-width: 30rem;
+  }
+  h3 {
+    text-shadow: 0px 0px 5px #bfb5b2;
+    font-size: 1.5em;
+  }
 }
