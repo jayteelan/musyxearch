@@ -41,10 +41,12 @@ class Release extends Component {
 
     return (
       <div className="release">
-        <button onClick={() => window.close()}>close</button>
+        <i class="material-icons close" onClick={() => window.close()}>
+          close
+        </i>
         <h1>{info && info.title}</h1>
         <img src={info && info.images[0].resource_url} />
-        <p>released {info && info.year}</p>
+        <h3>released {info && info.year}</h3>
         <TrackList tracks={info && info.tracklist} info={info} />
       </div>
     );

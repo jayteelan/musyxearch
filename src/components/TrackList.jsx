@@ -9,17 +9,18 @@ const TrackList = props => {
     }
   };
   return (
-    <ol className="track-list">
+    <ul className="track-list">
       {props.info &&
         props.tracks.map(track => {
           return (
             <li key={track.position}>
+              <span className="track-number">{track.position}</span>
               <span className="track-title">{props.info && track.title}</span>
-              <span className="running-time">{showTime(track)}</span>
+              <span className="track-time">{showTime(track)}</span>
             </li>
           );
         })}
-    </ol>
+    </ul>
   );
 };
 

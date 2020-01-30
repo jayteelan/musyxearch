@@ -6,6 +6,9 @@
   color: #00000044;
   /* position: absolute; */
 }
+.directions .material-icons:hover {
+  color: #00000088;
+}
 
 /* .left {
   left: 0;

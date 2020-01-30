@@ -1,2 +1,47 @@
 .release {
+  display: flex;
+  flex-direction: column;
+}
+.close {
+  z-index: 3;
+  font-size: 2em;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  transition: all 0.2s ease;
+}
+.close:hover {
+  color: red;
+  font-size: 3em;
+  font-weight: 600;
+  top: 1.5rem;
+  right: 1.5rem;
+  transform: rotate(90deg);
+}
+.track-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.track-list li {
+  flex-direction: row;
+  border-bottom: 1px solid #c7bbc9;
+  padding: 0.2em;
+}
+.track-list li:hover {
+  background-color: #c7bbc9aa;
+  font-weight: 600;
+}
+.track-list li:last-child {
+  border-bottom: none;
+}
+.track-number {
+  font-weight: 600;
+  color: #2e4045;
+  margin-right: 2rem;
+  text-align: center;
+}
+.track-time {
+  font-weight: 600;
+  float: right;
 }
