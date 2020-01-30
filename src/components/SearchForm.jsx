@@ -8,7 +8,7 @@ class SearchForm extends Component {
   render() {
     return (
       <form className="search-form">
-        <h1>SEARCHFORM</h1>
+        {/* <h1>SEARCHFORM</h1> */}
         <input
           type="text"
           name="searchbar"

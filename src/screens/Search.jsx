@@ -12,7 +12,8 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-        <h1>SEARCH</h1>
+        <h1>musyXearch</h1>
+        {/* <h1>SEARCH</h1> */}
         <SearchForm {...this.props} />
       </div>
     );

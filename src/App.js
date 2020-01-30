@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Main from "./screens/Main";
 import Directions from "./components/Directions";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 
 import { searchArtist, fetchDiscography, fetchRelease } from "./API";
 import About from "./screens/About";
@@ -88,6 +88,7 @@ class App extends Component {
             posX={this.state.posX}
             posY={this.state.posY}
             arr={this.state.arrY}
+            hed={this.state.headTitle}
           />
         );
       default:
@@ -175,11 +176,11 @@ class App extends Component {
     // console.log("APP PROPS", ...this.props);
     return (
       <div className="App">
-        <h1>APP</h1>{" "}
+        {/* <h1>APP</h1>{" "} */}
         {/* thanks to Corey for figuring out this switchy workaround to get the release screen to render properly */}
         <Switch>
           <Route exact path="/">
-            <Header headTitle={this.state.headTitle} />
+            {/* <Header headTitle={this.state.headTitle} /> */}
             {/* <Route
           exact
           path="/"

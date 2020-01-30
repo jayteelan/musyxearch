@@ -16,7 +16,11 @@ const PicList = props => {
         component={props => {
           console.log("PicList props", props);
           return (
-            <Release {...props} release_id={props.match.params.release_id} />
+            <Release
+              {...props}
+              release_id={props.match.params.release_id}
+              hed={this.state.headTitle}
+            />
           );
         }}
       />

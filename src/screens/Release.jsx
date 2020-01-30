@@ -3,6 +3,7 @@ import TrackList from "../components/TrackList";
 import { fetchRelease } from "../API";
 import Directions from "../components/Directions";
 import { Link } from "react-router-dom";
+import "../css/release.css";
 
 class Release extends Component {
   constructor(props) {
@@ -30,22 +31,21 @@ class Release extends Component {
     const info = this.props.currentRelease;
 
     console.log("currentRelease", info);
+    // this.setState({ hed: info && info.title });
 
     // const nextIndex = this.props.posY + 2;
     // // console.log("posY", this.props.posY);
     // // console.log("next", nextIndex);
     // const nextReleaseId = this.props.arrY[nextIndex].id;
+    // return "https://i.imgflip.com/3noj5y.jpg";
 
     return (
       <div className="release">
-        {/* <Link to="/">
-          <i className="material-icons left">arrow_back</i>
-        </Link> */}
-        {/* <Directions /> */}
-        <img src={info && info.images && info.images[0].resource_url} />
-        <h1>{info && info.images && info.title}</h1>
-        <p>released {info && info.images && info.year}</p>
-        <TrackList tracks={info && info.images && info.tracklist} info={info} />
+        <button onClick={() => window.close()}>close</button>
+        <h1>{info && info.title}</h1>
+        <img src={info && info.images[0].resource_url} />
+        <p>released {info && info.year}</p>
+        <TrackList tracks={info && info.tracklist} info={info} />
       </div>
     );
   }

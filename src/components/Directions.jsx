@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Link, Switch, Redirect } from "react-router-dom";
+import Search from "../screens/Search";
 import Release from "../screens/Release";
 import "../css/arrows.css";
 
@@ -67,7 +68,7 @@ class Directions extends Component {
     return (
       // conditional rendering for pos=0 or pos=arr.length-1
       <div className="directions">
-        <p>DIRECTIONS</p>
+        {/* <p>DIRECTIONS</p> */}
         {/* <i className="material-icons up" onClick={e => this.goUp(e)}>
           arrow_upward
         </i> */}

@@ -1,20 +1,15 @@
 .directions .material-icons {
+  /* display: flex; */
   z-index: 10;
   font-size: 4rem;
   font-weight: 600;
   color: #00000044;
-  position: absolute;
+  /* position: absolute; */
 }
 
-.up {
-  top: 0;
-}
-.left {
+/* .left {
   left: 0;
 }
 .right {
   right: 0;
-}
-.down {
-  bottom: 0;
-}
+} */

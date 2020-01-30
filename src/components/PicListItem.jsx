@@ -32,7 +32,7 @@ class PicListItem extends Component {
   render() {
     const albums = this.props.arr;
     return (
-      <div className="li">
+      <div className="pic-li">
         {albums.map((album, i) => {
           return (
             <li key={`index${i}`} id={album.id}>
