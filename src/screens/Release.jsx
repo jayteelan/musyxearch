@@ -37,6 +37,10 @@ class Release extends Component {
     const guard = this.state.releaseLoad;
 
     console.log("render", info, guard);
+    const nextIndex = this.props.posY + 2;
+    console.log("posY", this.props.posY);
+    console.log("next", nextIndex);
+    console.log("arrY", this.props.arrY[nextIndex].id);
     return (
       <div className="release">
         <img src={guard && info.images[0].resource_url} />

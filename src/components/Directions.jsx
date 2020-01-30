@@ -10,9 +10,12 @@ class Directions extends Component {
   }
   /* ---------- UPDATE posX/Y STATES ---------- */
   goUp = e => {
-    // console.log("Y", this.props.posY);
     if (this.props.posY > 0) {
       this.props.reducePosition("posY");
+      if (this.props.posX > 2) {
+        console.log("we can go up an album");
+        // go to arrY[i-1].id
+      }
     }
     console.log("current position (X,Y)", this.props.posX, this.props.posY);
   };
@@ -22,6 +25,9 @@ class Directions extends Component {
     console.log("arrY", this.props.arrY.length);
     if (this.props.posX > 2 && this.props.posY < this.props.arrY.length) {
       this.props.increasePosition("posY");
+      // go to arrY[posY+1].id
+      const nextIndex = this.props.posY + 1;
+      console.log(nextIndex);
     } else {
       this.setState({ posY: 0 });
     }

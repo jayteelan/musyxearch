@@ -222,6 +222,7 @@ class App extends Component {
                 handleRelease={this.handleRelease}
                 currentRelease={this.state.currentRelease}
                 arrY={this.state.arrY}
+                posY={this.state.posY}
                 isLoading={this.state.isLoading}
               />
             )}
