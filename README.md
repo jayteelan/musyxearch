@@ -125,7 +125,7 @@ Timeframes are key in the development cycle. You have limited time to code and s
 | create file structure                               |    H     |      3hrs      |     2hrs      |             |
 | fetch/parse API data                                |    H     |      8hrs      |     7hrs      |             |
 | code search components/ screen                      |    H     |      3hrs      |     3hrs      |             |
-| code/link remaining screens with inherited API data |    H     |     12 hrs     |     12hrs     |             |
+| code/link remaining screens with inherited API data |    H     |     12 hrs     |     15hrs     |             |
 | Styling                                             |   L-M    |      8hrs      |               |             |
 | Post-MVP                                            |    L     |     6 hrs      |               |             |
 | Total                                               |          |     40 hrs     |               |             |
@@ -136,14 +136,14 @@ This schedule will be used to keep track of your progress throughout the week an
 
 You are **responsible** for scheduling time with your squad to seek approval for each deliverable by the end of the corresponding day, excluding `Saturday` and `Sunday`.
 
-| Day       | Deliverable                                                          | Status            |
-| --------- | -------------------------------------------------------------------- | ----------------- |
-| Jan 24th  | Project Pitch / Wireframes / Priority Matrix / Functional Components | Complete          |
-| Jan 27th  | create/route components with placeholder divs                        | (nearly) Complete |
-| Jan 28th  | functioning search bar/API call/data parse to console                | Complete          |
-| Jan 29th  | render data to DOM                                                   | Complete          |
-| Jan 30th  | Styling/Post-MVP                                                     | Incomplete        |
-| Jan 31tst | Present                                                              | Incomplete        |
+| Day       | Deliverable                                                          | Status     |
+| --------- | -------------------------------------------------------------------- | ---------- |
+| Jan 24th  | Project Pitch / Wireframes / Priority Matrix / Functional Components | Complete   |
+| Jan 27th  | create/route components with placeholder divs                        | Complete   |
+| Jan 28th  | functioning search bar/API call/data parse to console                | Complete   |
+| Jan 29th  | render data to DOM                                                   | Complete   |
+| Jan 30th  | Styling/Post-MVP                                                     | Incomplete |
+| Jan 31tst | Present                                                              | Incomplete |
 
 ## Additional Libraries
 
@@ -153,6 +153,10 @@ You are **responsible** for scheduling time with your squad to seek approval for
 - [**react-string-replace**](https://www.npmjs.com/package/react-string-replace): simplifies string replacement in react
 
 ## Issues and Resolutions
+
+**30. Jan**
+
+- after refactoring the code in an attempt to get the Y-axis navigation functioning, it was decided that, given current time constraints, it would be best to scrap that functionality and instead focus on a simpler linear navigation.
 
 **29. Jan**
 
@@ -178,6 +182,10 @@ function reverse(string) {
 ```
 
 ## Change Log
+
+**30. Jan**
+
+- scrapped Y-axis functionality due to the complexity of making it functional coupled with current time constraints
 
 **29. Jan**
 

@@ -2,42 +2,34 @@ import React, { Component } from "react";
 import TrackList from "../components/TrackList";
 import { fetchRelease } from "../API";
 import Directions from "../components/Directions";
+import { Link } from "react-router-dom";
 
 class Release extends Component {
   constructor(props) {
     super(props);
-    console.log("RELEASE", this.props);
+    console.log("Release props", this.props);
+    // this.setState({ releaseProps: this.props });
     // console.log("release", props.match.match.params.release_id);
-    this.state = {
-      demDeets: [],
-      releaseLoad: false
-    };
+    // this.state = {
+    //   // demDeets: []
+    //   // releaseLoad: false
+    // };
   }
 
-  /* ---------- FETCH RELEASE DATA ---------- */
-  handleRelease = async () => {
-    const releaseDeets = await fetchRelease(
-      this.props.match.match.params.release_id
-    );
-
-    // console.log("props", this.props);
-    this.setState({
-      demDeets: releaseDeets,
-      releaseLoad: true
-    });
+  componentDidMount = async () => {
+    if (!this.props.releaseLoad) {
+      await this.props.handleRelease(this.props.match.match.params.release_id);
+    }
   };
-
-  componentDidMount() {
-    this.handleRelease();
-  }
   // }
 
   /* ---------- RENDER ---------- */
   render() {
-    const info = this.state.demDeets;
-    const guard = this.state.releaseLoad;
+    // const info = this.state.demDeets;
+    // const guard = this.state.releaseLoad;
+    const info = this.props.currentRelease;
 
-    console.log("render", info, guard);
+    console.log("currentRelease", info);
 
     // const nextIndex = this.props.posY + 2;
     // // console.log("posY", this.props.posY);
@@ -46,11 +38,14 @@ class Release extends Component {
 
     return (
       <div className="release">
+        {/* <Link to="/">
+          <i className="material-icons left">arrow_back</i>
+        </Link> */}
         {/* <Directions /> */}
-        <img src={guard && info.images[0].resource_url} />
-        <h1>{guard && info.title}</h1>
-        <p>released {guard && info.year}</p>
-        <TrackList tracks={guard && info.tracklist} guard={guard} />
+        <img src={info && info.images && info.images[0].resource_url} />
+        <h1>{info && info.images && info.title}</h1>
+        <p>released {info && info.images && info.year}</p>
+        <TrackList tracks={info && info.images && info.tracklist} info={info} />
       </div>
     );
   }

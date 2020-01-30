@@ -7,13 +7,14 @@ const PicList = props => {
   // console.log(props.arr);
   return (
     <div className="piclist">
-      <h1>{props.category()}</h1>
+      <h1>{props.category()}s</h1>
 
       <PicListItem {...props} />
       <Route
         exact
         path="/releases/:release_id"
         component={props => {
+          console.log("PicList props", props);
           return (
             <Release {...props} release_id={props.match.params.release_id} />
           );

@@ -23,8 +23,8 @@ class App extends Component {
       arrY: [],
       headTitle: "musYXearch",
       searchInput: "",
-      currentArtist: "",
-      currentRelease: []
+      currentArtist: ""
+      // currentRelease: []
     };
     this.reducePosition = this.reducePosition.bind(this);
     this.increasePosition = this.increasePosition.bind(this);
@@ -45,11 +45,11 @@ class App extends Component {
   /* ---------- DETERMINE RELEASE CATEGORY ---------- */
   category = () => {
     if (this.state.posX === 3) {
-      return "album";
+      return "Album";
     } else if (this.state.posX === 4) {
       return "EP";
     } else if (this.state.posX === 5) {
-      return "single";
+      return "Single";
     }
   };
 
@@ -70,35 +70,14 @@ class App extends Component {
         );
       case 2:
         return (
-          <Artist {...this.props} currentArtist={this.state.currentArtist} />
+          <Artist
+            {...this.props}
+            currentArtist={this.state.currentArtist}
+            hed={this.state.headTitle}
+          />
         );
       case 3:
-      // return (
-      //   <PicList
-      //     {...this.props}
-      //     handleDiscography={this.handleDiscography}
-      //     category={this.category}
-      //     isLoading={this.state.isLoading}
-      //     posX={this.state.posX}
-      //     posY={this.state.posY}
-      //     arr={this.state.arrY}
-      //   />
-      // );
       case 4:
-      // {
-      //   // console.log("state 4");
-      // }
-      // return (
-      //   <PicList
-      //     {...this.props}
-      //     handleDiscography={this.handleDiscography}
-      //     category={this.category}
-      //     isLoading={this.state.isLoading}
-      //     posX={this.state.posX}
-      //     posY={this.state.posY}
-      //     arr={this.state.arrY}
-      //   />
-      // );
       case 5:
         return (
           <PicList
@@ -121,13 +100,12 @@ class App extends Component {
     let posY = this.state.posY;
     let maxY = this.state.arrY.length;
     if (posY <= maxY) {
-      return posY === 0 ? (
-        this.renderScreenX()
-      ) : posX < 2 ? (
-        (posY = 0)
-      ) : (
-        <Release {...this.props} currentArtist={this.state.currentArtist} />
-      );
+      return posY === 0
+        ? this.renderScreenX()
+        : posX < 2
+        ? (posY = 0)
+        : // <Release {...this.props} currentArtist={this.state.currentArtist} />
+          console.log("nope");
     }
   };
 
@@ -178,39 +156,53 @@ class App extends Component {
     this.setState({ arrY: releaseArr.results, isLoading: false });
     // console.log("arrY", this.state.arrY);
   };
+  /* ---------- FETCH RELEASE DATA ---------- */
+  handleRelease = async release_id => {
+    console.log("App props", this.props);
+    const releaseDeets = await fetchRelease(release_id);
+    // console.log("app-release", this.state.releaseProps);
+    // (this.props.match.params.release_id);
+
+    // console.log("props", this.props);
+    this.setState({
+      currentRelease: releaseDeets,
+      releaseLoad: true
+    });
+  };
 
   /* ---------- RENDER ---------- */
   render() {
     // console.log("APP PROPS", ...this.props);
     return (
       <div className="App">
-        <h1>APP</h1>
-        <Header headTitle={this.state.headTitle} />
-        {/* <Route
+        <h1>APP</h1>{" "}
+        {/* thanks to Corey for figuring out this switchy workaround to get the release screen to render properly */}
+        <Switch>
+          <Route exact path="/">
+            <Header headTitle={this.state.headTitle} />
+            {/* <Route
           exact
           path="/"
           component={match => {
             return ( */}
-        <Directions
-          {...this.props}
-          // match={match}
-          posX={this.state.posX}
-          posY={this.state.posY}
-          arrX={this.state.arrX}
-          arrY={this.state.arrY}
-          currentArtist={this.state.currentArtist}
-          handleDiscography={this.handleDiscography}
-          renderScreenX={this.renderScreen}
-          renderScreenY={this.renderScreenY}
-          reducePosition={this.reducePosition}
-          increasePosition={this.increasePosition}
-        />
-        {/* );
+            <Directions
+              {...this.props}
+              // match={match}
+              posX={this.state.posX}
+              posY={this.state.posY}
+              arrX={this.state.arrX}
+              arrY={this.state.arrY}
+              currentArtist={this.state.currentArtist}
+              handleDiscography={this.handleDiscography}
+              renderScreenX={this.renderScreen}
+              renderScreenY={this.renderScreenY}
+              reducePosition={this.reducePosition}
+              increasePosition={this.increasePosition}
+            />
+            {/* );
           }}
         /> */}
-        {/* thanks to Corey for figuring out this switchy workaround to get the release screen to render properly */}
-        <Switch>
-          <Route exact path="/">
+
             <Main
               {...this.props}
               isLoading={this.state.isLoading}
@@ -230,7 +222,8 @@ class App extends Component {
               <Release
                 {...this.props}
                 match={match}
-                handleRelease={this.handleRelease}
+                handleRelease={release_id => this.handleRelease(release_id)}
+                releaseLoad={this.state.releaseLoad}
                 currentRelease={this.state.currentRelease}
                 arrY={this.state.arrY}
                 posY={this.state.posY}

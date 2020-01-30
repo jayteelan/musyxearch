@@ -12,7 +12,7 @@ class PicListItem extends Component {
 
   /* ---------- RETRIEVE RELEASES FIRST TIME PicList RENDERS ---------- */
   componentDidMount() {
-    console.log("mount");
+    // console.log("mount");
     this.props.handleDiscography();
     this.setState({ arrY: this.props.arr, isLoading: false });
   }
@@ -36,7 +36,7 @@ class PicListItem extends Component {
         {albums.map((album, i) => {
           return (
             <li key={`index${i}`} id={album.id}>
-              <Link to={`/releases/${album.id}`}>
+              <Link to={`/releases/${album.id}`} target="_blank">
                 <img src={album.thumb} alt="thumbnail" />{" "}
                 {!this.props.isLoading &&
                   `${reactStringReplace(
