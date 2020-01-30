@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TrackList from "../components/TrackList";
 import { fetchRelease } from "../API";
+import Directions from "../components/Directions";
 
 class Release extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Release extends Component {
       this.props.match.match.params.release_id
     );
 
-    console.log("props", this.props);
+    // console.log("props", this.props);
     this.setState({
       demDeets: releaseDeets,
       releaseLoad: true
@@ -37,12 +38,15 @@ class Release extends Component {
     const guard = this.state.releaseLoad;
 
     console.log("render", info, guard);
-    const nextIndex = this.props.posY + 2;
-    console.log("posY", this.props.posY);
-    console.log("next", nextIndex);
-    console.log("arrY", this.props.arrY[nextIndex].id);
+
+    // const nextIndex = this.props.posY + 2;
+    // // console.log("posY", this.props.posY);
+    // // console.log("next", nextIndex);
+    // const nextReleaseId = this.props.arrY[nextIndex].id;
+
     return (
       <div className="release">
+        {/* <Directions /> */}
         <img src={guard && info.images[0].resource_url} />
         <h1>{guard && info.title}</h1>
         <p>released {guard && info.year}</p>

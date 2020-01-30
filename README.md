@@ -125,7 +125,7 @@ Timeframes are key in the development cycle. You have limited time to code and s
 | create file structure                               |    H     |      3hrs      |     2hrs      |             |
 | fetch/parse API data                                |    H     |      8hrs      |     7hrs      |             |
 | code search components/ screen                      |    H     |      3hrs      |     3hrs      |             |
-| code/link remaining screens with inherited API data |    H     |     12 hrs     |     8hrs      |             |
+| code/link remaining screens with inherited API data |    H     |     12 hrs     |     12hrs     |             |
 | Styling                                             |   L-M    |      8hrs      |               |             |
 | Post-MVP                                            |    L     |     6 hrs      |               |             |
 | Total                                               |          |     40 hrs     |               |             |
@@ -141,7 +141,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 | Jan 24th  | Project Pitch / Wireframes / Priority Matrix / Functional Components | Complete          |
 | Jan 27th  | create/route components with placeholder divs                        | (nearly) Complete |
 | Jan 28th  | functioning search bar/API call/data parse to console                | Complete          |
-| Jan 29th  | render data to DOM                                                   | Incomplete        |
+| Jan 29th  | render data to DOM                                                   | Complete          |
 | Jan 30th  | Styling/Post-MVP                                                     | Incomplete        |
 | Jan 31tst | Present                                                              | Incomplete        |
 
@@ -154,10 +154,18 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 ## Issues and Resolutions
 
+**29. Jan**
+
+- album title parse working (although it sometimes leaves double-comma artifacts) after declaring `reactStringReplace` directly inside the `map` function instead of defining it outside and only invoking it inside the `map`
+- `PicListItem` components did not update with changes in `posX` state. Unable to find any solutions via Google, I consulted Corey who - after another hour or so of testing, Googling, and learning - worked out a solution: set an internal state in the `PicListItem` component tracking its X-position and compare it to the global X-position state (from `App.js`); if they aren't equal, the component re-renders and updates the internal state so it's once again equal to the global X-position (thereby preventing an infinite loop).
+- although data was rendering to each screen properly, the direction buttons were behaving erratically. A diagram of the app's overall "grid" structure was drawn and the behavior of each button on each screen was mapped to determine under which conditions they would throw errors or otherwise misbehave. Using this diagram, the various navigation functions were refactored to account for these exceptions so that the buttons (mostly) behaved as expected.
+- although the links from overview pages (e.g., the list of albums) properly routed to a detail page for the selected release, the up-down navigation buttons did not function properly; the complexity of this issue was compounded by the fact that although the releases were sorted in chronological order, the id numbers taken from the API and used as params were non-consecutive. Several possible solutions were investigated to no avail. After taking a break for mental refreshment, I pseudocoded a roundabout solution: get the current release's index in the array of releases (the `arrY` state), increment that number by one, retrieve the id number from the release object at the incremented index, then place that id in the slug. This approach was successfully coded until it came time to render the new page when the button was clicked: instead, it reloaded the same page. Some headway was made by wrapping the `Directions` component in a `Route` tag to provide access to a `history.push()` method, but this still did not work and had the side-effect of removing the navigation buttons from the `Release` page. The buttons reappeared when they were imported and directly rendered into the `Release` component, but they were still nonfunctional.
+  This issue remains unresolved.
+
 **27. Jan**
 
 - main screen initially did not update with X-position changes; refactored code to create function in App.js to set state and then call this function in Main.js
-- album titles com with artist name attached; discovered that str.replace() does not work in react. installed `react-string-replace` to facilitate renaming, but not yet able to use it in mapped arrays.
+- album titles com with artist name attached; discovered that `str.replace()` does not work in react. installed `react-string-replace` to facilitate renaming, but not yet able to use it in mapped arrays.
 
 ## Code Snippet
 
@@ -170,6 +178,12 @@ function reverse(string) {
 ```
 
 ## Change Log
+
+**29. Jan**
+
+- several components refactored from functional to class so they could change states to facilitate navigation
+- `ResultList` component and method renamed to `PicListItem` to clarify its role
+- internal `pos` state and a `componentDidUpdate()` function added to `PicListItem` to make `PicList` make new API calls (and not get stuck in infinite loops) when `posX` (i.e., the type of release) changed.
 
 **28. Jan**
 

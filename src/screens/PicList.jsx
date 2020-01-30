@@ -15,11 +15,7 @@ const PicList = props => {
         path="/releases/:release_id"
         component={props => {
           return (
-            <Release
-              {...props}
-              release_id={props.match.params.release_id}
-              posY={this.props.posY}
-            />
+            <Release {...props} release_id={props.match.params.release_id} />
           );
         }}
       />

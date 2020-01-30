@@ -181,11 +181,19 @@ class App extends Component {
 
   /* ---------- RENDER ---------- */
   render() {
+    // console.log("APP PROPS", ...this.props);
     return (
       <div className="App">
         <h1>APP</h1>
         <Header headTitle={this.state.headTitle} />
+        {/* <Route
+          exact
+          path="/"
+          component={match => {
+            return ( */}
         <Directions
+          {...this.props}
+          // match={match}
           posX={this.state.posX}
           posY={this.state.posY}
           arrX={this.state.arrX}
@@ -197,6 +205,9 @@ class App extends Component {
           reducePosition={this.reducePosition}
           increasePosition={this.increasePosition}
         />
+        {/* );
+          }}
+        /> */}
         {/* thanks to Corey for figuring out this switchy workaround to get the release screen to render properly */}
         <Switch>
           <Route exact path="/">

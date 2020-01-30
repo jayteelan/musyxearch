@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Link, Switch } from "react-router-dom";
+import Release from "../screens/Release";
 
 class Directions extends Component {
   constructor(props) {
@@ -27,7 +28,13 @@ class Directions extends Component {
       this.props.increasePosition("posY");
       // go to arrY[posY+1].id
       const nextIndex = this.props.posY + 1;
-      console.log(nextIndex);
+      console.log("next", nextIndex);
+      const nextReleaseId = this.props.arrY[nextIndex].id;
+      console.log("nextID", nextReleaseId);
+      // e.preventDefault();
+      console.log("props", this.props);
+
+      this.props.match.history.push(`/releases/${nextReleaseId}`);
     } else {
       this.setState({ posY: 0 });
     }

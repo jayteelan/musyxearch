@@ -18,7 +18,7 @@ class PicListItem extends Component {
   }
   /* ---------- RETRIEVE RELEASES IF posX CHANGES AND RE-RENDER ---------- */
   componentDidUpdate() {
-    if (this.props.posX != this.state.pos) {
+    if (this.props.posX !== this.state.pos) {
       console.log(this.props.posX);
       this.props.handleDiscography();
       this.setState({
