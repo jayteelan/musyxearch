@@ -1,19 +1,10 @@
 .directions .material-icons {
-  /* display: flex; */
   z-index: 10;
   font-size: 4rem;
   font-weight: 600;
   color: #00000088;
-  /* position: absolute; */
 }
 .directions .material-icons:hover {
   color: #00000044;
   cursor: pointer;
 }
-
-/* .left {
-  left: 0;
-}
-.right {
-  right: 0;
-} */

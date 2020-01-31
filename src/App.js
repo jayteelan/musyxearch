@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import "./css/desktop.css";
 import Main from "./screens/Main";
 import Directions from "./components/Directions";
 import { searchArtist, fetchDiscography, fetchRelease } from "./API";

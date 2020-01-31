@@ -30,11 +30,11 @@ export const searchArtist = async query => {
         allInfo.push(res2.data);
         return allInfo;
       } catch (err) {
-        console.log("error", err);
+        alert("error", err);
       }
     }
   } catch (err) {
-    console.log("error", err);
+    alert("error", err);
   }
 };
 
@@ -46,7 +46,7 @@ export const fetchDiscography = async (query, format) => {
     );
     return res.data;
   } catch (err) {
-    console.log("error", err);
+    alert("error", err);
   }
 };
 
@@ -58,6 +58,6 @@ export const fetchRelease = async query => {
     );
     return res.data;
   } catch (err) {
-    console.log("error", err);
+    alert("error", err);
   }
 };

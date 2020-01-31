@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/desktop.css";
 
 /* ---------- ARTIST PROFILE PAGE ---------- */
 const Artist = props => {

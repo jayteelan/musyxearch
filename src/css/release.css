@@ -1,7 +1,3 @@
-.release {
-  display: flex;
-  flex-direction: column;
-}
 .close {
   z-index: 3;
   font-size: 2em;
@@ -19,7 +15,11 @@
   right: 1.25rem;
   transform: rotate(90deg);
 }
-
+.track-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
 .track-list li {
   flex-direction: row;
   border-bottom: 1px solid #c7bbc9;

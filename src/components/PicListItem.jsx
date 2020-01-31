@@ -16,8 +16,8 @@ class PicListItem extends Component {
   componentDidMount() {
     this.props.handleDiscography();
     this.setState({ arrY: this.props.arr, isLoading: false });
-	}
-	
+  }
+
   /* ---------- RETRIEVE RELEASES IF posX CHANGES AND RE-RENDER ---------- */
   componentDidUpdate() {
     if (this.props.posX !== this.state.pos) {
@@ -45,8 +45,10 @@ class PicListItem extends Component {
                       {!this.props.isLoading && album.year}
                     </span>
                     <br />
-										<span className="title">
-										{/* the API returns album titles in "Artist - Title" format, so reactStringReplace gets rid of the "Artist - " bit since React doesn't like str.replace() */}
+                    <span className="title">
+                      {/* the API returns album titles in "Artist - Title" format,
+                      so reactStringReplace gets rid of the "Artist - " bit
+                      since React doesn't like str.replace() */}
                       {!this.props.isLoading &&
                         `${reactStringReplace(
                           `${album.title}`,

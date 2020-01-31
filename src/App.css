@@ -58,16 +58,3 @@ a:hover {
 button:hover {
   cursor: pointer;
 }
-/* ----- MEDIUM -----*/
-@media only screen and (min-width: 768px) {
-  body {
-    flex-direction: row;
-  }
-  img {
-    max-width: 30rem;
-  }
-  h3 {
-    text-shadow: 0px 0px 5px #bfb5b2;
-    font-size: 1.5em;
-  }
-}
