@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+/* ---------- SEARCH INPUT AND BUTTON ---------- */
 class SearchForm extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,6 @@ class SearchForm extends Component {
   render() {
     return (
       <form className="search-form">
-        {/* <h1>SEARCHFORM</h1> */}
         <input
           type="text"
           name="searchbar"

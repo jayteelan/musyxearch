@@ -3,8 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Main from "./screens/Main";
 import Directions from "./components/Directions";
-// import Header from "./components/Header";
-
 import { searchArtist, fetchDiscography, fetchRelease } from "./API";
 import About from "./screens/About";
 import Artist from "./screens/Artist";
@@ -18,7 +16,7 @@ class App extends Component {
     this.state = {
       isLoading: true,
       posX: 1,
-      posY: 0,
+      posY: 0, // even though i got rid of the Y-axis functionality due to time constraints, lots of the code still depends on the posY and arrY states for conditional rendering
       arrX: ["About", "Search", "Artist", "Album", "EP", "Single"],
       arrY: [],
       searchInput: "",
@@ -56,6 +54,7 @@ class App extends Component {
     switch (this.state.posX) {
       case 0:
         return <About />;
+
       case 1:
         return (
           <Search
@@ -66,6 +65,7 @@ class App extends Component {
             currentArtist={this.state.currentArtist}
           />
         );
+
       case 2:
         return (
           <Artist
@@ -74,6 +74,7 @@ class App extends Component {
             hed={this.state.headTitle}
           />
         );
+
       case 3:
       case 4:
       case 5:
@@ -89,6 +90,7 @@ class App extends Component {
             currentArtist={this.state.currentArtist[0].title}
           />
         );
+
       default:
     }
   };
@@ -98,13 +100,15 @@ class App extends Component {
     const posX = this.state.posX;
     let posY = this.state.posY;
     let maxY = this.state.arrY.length;
+
     if (posY <= maxY) {
-      return posY === 0
-        ? this.renderScreenX()
-        : posX < 2
-        ? (posY = 0)
-        : // <Release {...this.props} currentArtist={this.state.currentArtist} />
-          console.log("nope");
+      return posY === 0 ? (
+        this.renderScreenX()
+      ) : posX < 2 ? (
+        (posY = 0)
+      ) : (
+        <div></div>
+      ); // do nothing placeholder
     }
   };
 
@@ -127,42 +131,37 @@ class App extends Component {
     const artistData = await searchArtist(query);
     this.setCurrentArtist(artistData);
     this.increasePosition("posX");
-    // console.log("artistData", artistData);
   };
 
   /* ---------- FETCH DISCOGRAPHY ---------- */
   handleDiscography = async () => {
-    // console.log("handleDiscography", this.state.posX);
     const artist = this.state.currentArtist[1].name;
     let releaseType = "";
     switch (this.state.posX) {
       case 3:
-        // console.log("here 3");
         releaseType = "album";
         break;
+
       case 4:
-        // console.log("now here 4");
         releaseType = "EP";
         break;
+
       case 5:
         releaseType = "single";
         break;
+
       default:
         releaseType = "album";
         break;
     }
     const releaseArr = await fetchDiscography(artist, releaseType);
     this.setState({ arrY: releaseArr.results, isLoading: false });
-    // console.log("arrY", this.state.arrY);
   };
+
   /* ---------- FETCH RELEASE DATA ---------- */
   handleRelease = async release_id => {
-    console.log("App props", this.props);
     const releaseDeets = await fetchRelease(release_id);
-    // console.log("app-release", this.state.releaseProps);
-    // (this.props.match.params.release_id);
 
-    // console.log("props", this.props);
     this.setState({
       currentRelease: releaseDeets,
       releaseLoad: true
@@ -171,19 +170,11 @@ class App extends Component {
 
   /* ---------- RENDER ---------- */
   render() {
-    // console.log("APP PROPS", ...this.props);
     return (
       <div className="App">
-        {/* <h1>APP</h1>{" "} */}
         {/* thanks to Corey for figuring out this switchy workaround to get the release screen to render properly */}
         <Switch>
           <Route exact path="/">
-            {/* <Header headTitle={this.state.headTitle} /> */}
-            {/* <Route
-          exact
-          path="/"
-          component={match => {
-            return ( */}
             <Directions
               {...this.props}
               // match={match}
@@ -198,9 +189,6 @@ class App extends Component {
               reducePosition={this.reducePosition}
               increasePosition={this.increasePosition}
             />
-            {/* );
-          }}
-        /> */}
 
             <Main
               {...this.props}
@@ -214,6 +202,7 @@ class App extends Component {
               handleInputChange={this.handleInputChange}
             />
           </Route>
+
           <Route
             exact
             path="/releases/:release_id"

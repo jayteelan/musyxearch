@@ -3,8 +3,8 @@ import { Route } from "react-router-dom";
 import PicListItem from "../components/PicListItem";
 import Release from "./Release";
 
+/* ---------- LIST OF QUERY RESULTS WITH THUMBNAIL PICS ---------- */
 const PicList = props => {
-  console.log("PicList", props);
   return (
     <div className="piclist">
       <h1>{props.category()}s</h1>
@@ -14,7 +14,6 @@ const PicList = props => {
         exact
         path="/releases/:release_id"
         component={props => {
-          console.log("PicList props", props);
           return (
             <Release
               {...props}

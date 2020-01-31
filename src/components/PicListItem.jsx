@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import reactStringReplace from "react-string-replace";
 import "../css/picList.css";
 
+/* ---------- LIST OF RELEASES WITH THUMBNAILS --------- */
 class PicListItem extends Component {
   constructor(props) {
     super(props);
@@ -13,14 +14,13 @@ class PicListItem extends Component {
 
   /* ---------- RETRIEVE RELEASES FIRST TIME PicList RENDERS ---------- */
   componentDidMount() {
-    // console.log("mount");
     this.props.handleDiscography();
     this.setState({ arrY: this.props.arr, isLoading: false });
-  }
+	}
+	
   /* ---------- RETRIEVE RELEASES IF posX CHANGES AND RE-RENDER ---------- */
   componentDidUpdate() {
     if (this.props.posX !== this.state.pos) {
-      console.log(this.props.posX);
       this.props.handleDiscography();
       this.setState({
         pos: this.props.posX,
@@ -32,8 +32,6 @@ class PicListItem extends Component {
   /* ---------- RENDER ---------- */
   render() {
     const albums = this.props.arr;
-    console.log("props", this.props);
-    console.log("albums", albums);
     return (
       <div className="pic-li">
         <ul>
@@ -47,7 +45,8 @@ class PicListItem extends Component {
                       {!this.props.isLoading && album.year}
                     </span>
                     <br />
-                    <span className="title">
+										<span className="title">
+										{/* the API returns album titles in "Artist - Title" format, so reactStringReplace gets rid of the "Artist - " bit since React doesn't like str.replace() */}
                       {!this.props.isLoading &&
                         `${reactStringReplace(
                           `${album.title}`,

@@ -122,13 +122,13 @@ Timeframes are key in the development cycle. You have limited time to code and s
 
 | Component                                           | Priority | Estimated Time | Time Invested | Actual Time |
 | --------------------------------------------------- | :------: | :------------: | :-----------: | :---------: |
-| create file structure                               |    H     |      3hrs      |     2hrs      |             |
-| fetch/parse API data                                |    H     |      8hrs      |     7hrs      |             |
-| code search components/ screen                      |    H     |      3hrs      |     3hrs      |             |
-| code/link remaining screens with inherited API data |    H     |     12 hrs     |     15hrs     |             |
-| Styling                                             |   L-M    |      8hrs      |               |             |
-| Post-MVP                                            |    L     |     6 hrs      |               |             |
-| Total                                               |          |     40 hrs     |               |             |
+| create file structure                               |    H     |      3hrs      |     2hrs      |    2hrs     |
+| fetch/parse API data                                |    H     |      8hrs      |     7hrs      |    7hrs     |
+| code search components/ screen                      |    H     |      3hrs      |     3hrs      |    3hrs     |
+| code/link remaining screens with inherited API data |    H     |     12 hrs     |     15hrs     |    15hrs    |
+| Styling                                             |   L-M    |      8hrs      |     7hrs      |    7hrs     |
+| Post-MVP                                            |    L     |     6 hrs      |      n/a      |     n/a     |
+| Total                                               |          |   34-40 hrs    |    32 hrs     |   32 hrs    |
 
 ## Project Schedule
 
@@ -142,7 +142,7 @@ You are **responsible** for scheduling time with your squad to seek approval for
 | Jan 27th  | create/route components with placeholder divs                        | Complete   |
 | Jan 28th  | functioning search bar/API call/data parse to console                | Complete   |
 | Jan 29th  | render data to DOM                                                   | Complete   |
-| Jan 30th  | Styling/Post-MVP                                                     | Incomplete |
+| Jan 30th  | Styling/Post-MVP                                                     | Complete   |
 | Jan 31tst | Present                                                              | Incomplete |
 
 ## Additional Libraries
@@ -173,12 +173,14 @@ You are **responsible** for scheduling time with your squad to seek approval for
 
 ## Code Snippet
 
-Use this section to include a brief code snippet you are proud of, along with a brief description of why.
+This is a bit of code from the Y-axis navigation functionality that was ultimately scrapped, but it took the better part of two days (!) to come up with this solution for rendering details page for the next release in a list when the user would click the "down" button. Relying on the `posY` (current Y-position) and `arrY` (the list of releases) states, it increments the `posY` state to determine the index of the next object (release) in `arrY`, then drills down within that object to retrieve its ID string (a seemingly random string of numbers). Finally, with that ID, React Router could re-render the Release component with new data (i.e., redirect to the next release).
+...at least that was the idea. It never quite worked out that way even though console logs showed the logic worked as expected.
 
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+    const nextIndex = this.props.posY + 1;
+      const nextReleaseId = this.props.arrY[nextIndex].id;
+      return <Redirect to={`/releases/${nextReleaseId}`} />;
+
 ```
 
 ## Change Log

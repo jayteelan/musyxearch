@@ -1,16 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
+/* ---------- INSTRUCTIONS AND CREDITS ---------- */
 const About = props => {
-  console.log("current position (X,Y)", props.posX, props.posY);
-
   return (
     <div className="about">
       <h1>musyXearch</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa deserunt
-        quidem impedit, reprehenderit, laborum beatae rem corporis quae animi
-        accusamus tempora consequatur quam odio blanditiis non modi sit incidunt
+        1. Search for an artist
+        <br />
+        2. Use the arrows to navigate between categories
+        <br />
+        3. ???
+        <br />
+        4. PROFIT!
         <br />
         <br />
         background image from{" "}

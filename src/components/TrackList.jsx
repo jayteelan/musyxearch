@@ -1,14 +1,15 @@
 import React from "react";
-import { fetchRelease } from "../API";
 
+/* ---------- PARSES API DATA AND RETURNS A LIST OF TRACKS ---------- */
 const TrackList = props => {
-  // console.log("tracklist", props);
   const showTime = track => {
     if (props.info && track.duration.length !== 0) {
       return `[${props.info && track.duration}]`;
     }
-  };
-  return (
+	};
+	
+	return (
+		// this was originally an <ol>, but the numbers showed up to the left of the box around the list (i.e., in the margin), so I turned it into a <ul> and relied on the API for track numbers instead
     <ul className="track-list">
       {props.info &&
         props.tracks.map(track => {
