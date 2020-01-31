@@ -4,7 +4,7 @@ import PicListItem from "../components/PicListItem";
 import Release from "./Release";
 
 const PicList = props => {
-  // console.log(props.arr);
+  console.log("PicList", props);
   return (
     <div className="piclist">
       <h1>{props.category()}s</h1>

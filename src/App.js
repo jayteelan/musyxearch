@@ -21,10 +21,8 @@ class App extends Component {
       posY: 0,
       arrX: ["About", "Search", "Artist", "Album", "EP", "Single"],
       arrY: [],
-      headTitle: "musYXearch",
       searchInput: "",
       currentArtist: ""
-      // currentRelease: []
     };
     this.reducePosition = this.reducePosition.bind(this);
     this.increasePosition = this.increasePosition.bind(this);
@@ -88,7 +86,7 @@ class App extends Component {
             posX={this.state.posX}
             posY={this.state.posY}
             arr={this.state.arrY}
-            hed={this.state.headTitle}
+            currentArtist={this.state.currentArtist[0].title}
           />
         );
       default:

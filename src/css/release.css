@@ -19,9 +19,7 @@
   right: 1.25rem;
   transform: rotate(90deg);
 }
-.track-list {
-  list-style: none;
-}
+
 .track-list li {
   flex-direction: row;
   border-bottom: 1px solid #c7bbc9;

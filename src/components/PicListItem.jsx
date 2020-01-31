@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import reactStringReplace from "react-string-replace";
+import "../css/picList.css";
 
 class PicListItem extends Component {
   constructor(props) {
@@ -31,25 +32,35 @@ class PicListItem extends Component {
   /* ---------- RENDER ---------- */
   render() {
     const albums = this.props.arr;
+    console.log("props", this.props);
+    console.log("albums", albums);
     return (
       <div className="pic-li">
-        {albums.map((album, i) => {
-          return (
-            <li key={`index${i}`} id={album.id}>
+        <ul>
+          {albums.map((album, i) => {
+            return (
               <Link to={`/releases/${album.id}`} target="_blank">
-                <img src={album.thumb} alt="thumbnail" />{" "}
-                {!this.props.isLoading &&
-                  `${reactStringReplace(
-                    album.title,
-                    `${this.props.artist} - `,
-                    () => ""
-                  )}`}
-                {/* ^^ parses "artist - title" to "title" */}
-                {!this.props.isLoading && album.year}
+                <li key={`index${i}`} id={album.id}>
+                  <img src={album.thumb} alt="thumbnail" />
+                  <span className="year-title">
+                    <span className="year">
+                      {!this.props.isLoading && album.year}
+                    </span>
+                    <br />
+                    <span className="title">
+                      {!this.props.isLoading &&
+                        `${reactStringReplace(
+                          `${album.title}`,
+                          `${this.props.currentArtist} - `,
+                          () => ""
+                        )}`}
+                    </span>
+                  </span>
+                </li>
               </Link>
-            </li>
-          );
-        })}
+            );
+          })}
+        </ul>
       </div>
     );
   }

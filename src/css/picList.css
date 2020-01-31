@@ -1,0 +1,24 @@
+.pic-li {
+  max-width: 60rem;
+}
+li {
+  display: inline-block;
+  width: 18rem;
+  border-bottom: 1px solid #c7bbc9;
+  padding: 0.5rem;
+  transition: all 0.2s ease;
+}
+img {
+  margin: 0;
+}
+li:hover {
+  background-color: #5e3c58;
+}
+.year {
+  font-size: 3em;
+  margin-left: 1rem;
+}
+.title {
+  font-size: 1em;
+  text-justify: left;
+}
